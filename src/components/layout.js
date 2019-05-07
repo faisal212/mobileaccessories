@@ -9,7 +9,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import { createGlobalStyle } from 'styled-components';
 import {colors,headingFont} from '../utils/styles';
-import Navbar from './globals/navbar';
+import Navbar from './Globals/Navbar';
 import Footer from './Globals/Footer';
 const Layout = ({ children ,isHome}) => (
   <React.Fragment>
