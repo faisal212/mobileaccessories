@@ -7,47 +7,65 @@
 
 import React from "react"
 import PropTypes from "prop-types"
-import { StaticQuery, graphql } from "gatsby"
-
-import Header from "./header"
-import "./layout.css"
-
-const Layout = ({ children }) => (
-  <StaticQuery
-    query={graphql`
-      query SiteTitleQuery {
-        site {
-          siteMetadata {
-            title
-          }
-        }
-      }
-    `}
-    render={data => (
-      <>
-        <Header siteTitle={data.site.siteMetadata.title} />
-        <div
-          style={{
-            margin: `0 auto`,
-            maxWidth: 960,
-            padding: `0px 1.0875rem 1.45rem`,
-            paddingTop: 0,
-          }}
-        >
-          <main>{children}</main>
-          <footer>
-            © {new Date().getFullYear()}, Built with
-            {` `}
-            <a href="https://www.gatsbyjs.org">Gatsby</a>
-          </footer>
-        </div>
-      </>
-    )}
-  />
+import { createGlobalStyle } from 'styled-components';
+import {colors,headingFont} from '../utils/styles';
+import Navbar from './globals/navbar';
+import Footer from './Globals/Footer';
+const Layout = ({ children ,isHome}) => (
+  <React.Fragment>
+    <GlobalStyle/>
+    <Navbar isHome={isHome}/>
+    {children}    
+    <Footer/>
+  </React.Fragment>
 )
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
 }
+
+const GlobalStyle = createGlobalStyle`
+
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html{
+  font-size: 16px;
+}
+h1,h2,h3,h4,h5,h6{
+  font-family:${headingFont};
+
+}
+body{
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: ${colors.mainBlack};
+  background: #f5f5f5;
+
+}
+.container {
+  width: 1210px;
+}
+.background-white{
+  background: white;
+}
+a {
+  color: inherit; /* blue colors for links too */
+  text-decoration: inherit; /* no underline */
+}
+.default-background {
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: unset !important;
+ 
+}
+`
 
 export default Layout
