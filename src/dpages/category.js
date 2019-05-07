@@ -5,6 +5,7 @@ import SEO from "../components/seo";
 import ListHeading from '../components/Shop/ListHeading';
 import { Container, Row, Col } from 'react-grid-system';
 import ProductView from '../components/Shop/ProductView';
+import Img from "gatsby-image"
 
 export default class category extends React.Component {
 
@@ -20,15 +21,18 @@ export default class category extends React.Component {
         ]
       }
 
-    }
+    },
+    imageData: null
   };
+
   constructor(props) {
     super(props);
-
+  
   }
 
   render() {
     const data = this.props.data.allContentfulCategory.edges[0];
+    const {imageData} = this.state;
     return (
       <Layout isHome={false}>
         <ListHeading title={data.node.title} />
@@ -39,6 +43,7 @@ export default class category extends React.Component {
                    <ProductView  item={product}/>
                </Col>
               ))}
+           
           </Row>
         </Container>
       </Layout>
@@ -63,6 +68,7 @@ export const query = graphql`
               ...GatsbyContentfulFluid_tracedSVG
             }
           }
+          colors
         }
       }
     }

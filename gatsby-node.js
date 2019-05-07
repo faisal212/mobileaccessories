@@ -21,6 +21,15 @@ exports.createPages = async function ({ actions, graphql }) {
             }
           }
         }
+        
+        products:   allContentfulProducts{
+          edges{
+            node{
+              id 
+              slug
+            }
+          }
+        }
       }
     `)
   data.categories.edges.forEach(edge => {
@@ -34,5 +43,17 @@ exports.createPages = async function ({ actions, graphql }) {
         context: { slug: slug, id: id },
       })
     }
-  })
+  });
+
+
+  data.products.edges.forEach(edge => {
+    const slug = edge.node.slug;
+    const id = edge.node.id;
+    actions.createPage({
+      path: `products/${slug}`,
+      component: require.resolve(`./src/dpages/product.js`),
+      context: { slug: slug, id: id },
+    })
+  });
+
 }

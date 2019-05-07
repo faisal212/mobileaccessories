@@ -14,7 +14,7 @@ export default function Videos({items}) {
         <Row>
 
           {items.edges.map(item => (
-            <Col sm={4} key={item.node.id}>
+            <Col xs={4} key={item.node.id}>
               <Video video={item.node}/>
                 
             </Col>
