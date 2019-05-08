@@ -1,12 +1,12 @@
 import React from "react"
-import ModalVideoCss from  'react-modal-video/css/modal-video.min.css';
+import  'react-modal-video/css/modal-video.min.css';
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { Carousel,StarProducts,Videos } from "../components/Home";
 const IndexPage = ({ data }) => (
   <Layout isHome={true}>
-    <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
+    <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} isHome={true} />
     <Carousel items={data.carousel} />
     <StarProducts items ={data.starProducts}/>
     <Videos items={data.videos}/>

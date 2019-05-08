@@ -8,6 +8,7 @@ module.exports = {
     author: `@gatsbyjs`,
   },
   plugins: [
+    'gatsby-plugin-netlify',
     `gatsby-plugin-transition-link`,
     `gatsby-plugin-react-helmet`,
     {

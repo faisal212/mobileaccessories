@@ -10,35 +10,44 @@ import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
-function SEO({ description, lang, meta, keywords, title }) {
-  const { site } = useStaticQuery(
+
+function SEO({ description, lang, meta, keywords, title ,isHome }) {
+  const { site ,name} = useStaticQuery(
     graphql`
-      query {
-        site {
+       {
+       site: site {
           siteMetadata {
             title
             description
             author
           }
         }
-      }
+    }
+
     `
   )
-
+  
   const metaDescription = description || site.siteMetadata.description
+  
+  const links = [];
+  
+  if(isHome ){
+    const swiper = {
+      rel:"stylesheet",
+      type:"text/css",
+      href: "https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css"
+    };
 
+   
+    links.push(swiper);
+
+  }
   return (
     <Helmet
       htmlAttributes={{
         lang,
       }}
-      link = {[
-        {
-          rel:"stylesheet",
-          type:"text/css",
-          href: "https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css"
-        }
-      ]}
+      link = {links}
       title={title}
       titleTemplate={`%s | ${site.siteMetadata.title}`}
       meta={[
