@@ -75,6 +75,7 @@ const VideoWrapper = styled.div`
   .play{
     font-size: 1.5rem;
   }
+<<<<<<< HEAD
   .gatsby-image-wrapper:before{
     background: rgba(0,0,0,0.4);
     position: absolute;
@@ -85,5 +86,11 @@ const VideoWrapper = styled.div`
     top:0;
     display: block;
     content: '';
+=======
+  div:nth-child(1){
+    background: rgba(0,0,0,0.4);
+    position: relative;
+    z-index: 1;
+>>>>>>> 016ded21371f0fb5c523e351aab6af62c3b3a093
   }
 `;
