@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components';
-import AniLink from "gatsby-plugin-transition-link/AniLink";
 import { IoIosClose } from 'react-icons/io';
-
+import {Link} from 'gatsby';
 import * as styles from '../../../utils/styles';
 
 export default class NavbarLinks extends Component {
@@ -35,9 +34,9 @@ export default class NavbarLinks extends Component {
                     {
                         this.state.links.map(item => (
                             <li key={item.id}>
-                                <AniLink swipe direction={item.id === 0 ? 'down' : 'right'} top="exit" duration={0.3} to={item.path} className="nav-link">
+                                <Link swipe direction={item.id === 0 ? 'down' : 'right'} top="exit" duration={0.3} to={item.path} className="nav-link">
                                     {item.name}
-                                </AniLink >
+                                </Link >
                             </li>
                         ))
                     }
