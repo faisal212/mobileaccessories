@@ -1,5 +1,5 @@
 import React from "react"
-import ModalVideo from 'react-modal-video/css/modal-video.min.css';
+import ModalVideoCss from  'react-modal-video/css/modal-video.min.css';
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -17,7 +17,7 @@ export const query = graphql`
   {
     carousel:  allContentfulMainCarousel {
     edges {
-      node { 
+      node {  
         id
       	image{
           fluid{
