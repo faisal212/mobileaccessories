@@ -18,8 +18,8 @@ const SectionHeadingWrapper = styled.div`
         flex: 1;
         align-items: center;
     }
-   }
-   h2:before, h2:after{
+   
+   h2:before, h2:after{ 
     height: 1px;
     content: '';
     display: block; 
