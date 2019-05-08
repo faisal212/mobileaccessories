@@ -14,18 +14,24 @@ const SectionHeadingWrapper = styled.div`
        font-size: 1.875rem;
        position: relative;
        font-weight: 300;
+       display: flex;
+        flex: 1;
+        align-items: center;
+    }
    }
    h2:before, h2:after{
-       width: 35%;
-       height: 1px;
-       content: '';
-       display: block;
-       margin : 0 auto;
-       position: absolute;
-       top:50%;
-       transform: translateY(-50%);
-       background: #e0e0e0;
-       margin: 0 auto;
+    height: 1px;
+    content: '';
+    display: block; 
+    margin: 0 auto;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    background: #e0e0e0;
+    margin: 0 auto;
+    flex: 1;
+    margin: 0 5%;;
    }
    h2:before{
        left: 3%;

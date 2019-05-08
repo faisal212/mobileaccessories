@@ -1,5 +1,5 @@
 import React from "react"
-import 'react-modal-video/css/modal-video.min.css';
+import ModalVideo from 'react-modal-video/css/modal-video.min.css';
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
