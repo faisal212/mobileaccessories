@@ -85,6 +85,10 @@ const StarProductsWrapper = styled.div`
     .content h3{
         font-size: 1.1875rem;
         font-weight: 300;
+        @media (max-width:768px){
+            font-size: 1rem;
+
+        }
     }
 
     .content p{

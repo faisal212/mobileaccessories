@@ -22,7 +22,7 @@ export default class Video extends Component {
       <VideoWrapper>
             <ModalVideo channel='youtube' isOpen={this.state.isOpen} videoId={video.videoId} onClose={() => this.setState({isOpen: false})} />
             <div  onClick={this.openModal} className="content-wrapper">
-                <Img fluid={video.thumbnail.fluid} />
+                <Img fluid={video.thumbnail.fluid} backgroundColor={'rgba(0,0,0,0.6)'} />
                 <div className="content">
                     <div className="icon-circle">
                       <IoIosPlay  className="play" color="#fff" />
@@ -74,5 +74,10 @@ const VideoWrapper = styled.div`
   }
   .play{
     font-size: 1.5rem;
+  }
+  div:nth-child(1){
+    background: rgba(0,0,0,0.4);
+    position: relative;
+    z-index: 1;
   }
 `;
