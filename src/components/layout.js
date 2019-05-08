@@ -11,14 +11,20 @@ import { createGlobalStyle } from 'styled-components';
 import {colors,headingFont} from '../utils/styles';
 import Navbar from './Globals/Navbar';
 import Footer from './Globals/Footer';
-const Layout = ({ children ,isHome}) => (
+import { ScreenClassProvider} from 'react-grid-system';
+
+const Layout = ({ children ,isHome}) => {
+   
+  return(
   <React.Fragment>
     <GlobalStyle/>
     <Navbar isHome={isHome}/>
-    {children}    
+    <ScreenClassProvider>
+        {children}  
+    </ScreenClassProvider>    
     <Footer/>
   </React.Fragment>
-)
+)}
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
@@ -34,6 +40,15 @@ const GlobalStyle = createGlobalStyle`
 }
 html{
   font-size: 16px;
+}
+@media (max-width:767px){
+  html{
+    font-size:14px;
+  
+  }
+  .column-wrapper{
+    padding: 0 5px !important;
+  }
 }
 h1,h2,h3,h4,h5,h6{
   font-family:${headingFont};

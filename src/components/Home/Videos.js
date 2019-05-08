@@ -1,5 +1,6 @@
 import React from 'react'
-import { Container, Row, Col } from 'react-grid-system';
+import { Container, Row } from 'react-grid-system';
+import Col from '../../utils/ColWrapper';
 import SectionHeading from '../Globals/SectionHeading';
 import styled from 'styled-components';
 import Video from './Video';
@@ -11,10 +12,10 @@ export default function Videos({items}) {
     <VideosWrapper>
       <Container>
         <SectionHeading title="Videos" />
-        <Row>
+        <Row >
 
           {items.edges.map(item => (
-            <Col xs={4} key={item.node.id}>
+            <Col xs={4} key={item.node.id} >
               <Video video={item.node}/>
                 
             </Col>
