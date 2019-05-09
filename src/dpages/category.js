@@ -58,6 +58,7 @@ export const query = graphql`
           featureImage{ 
             fluid(maxWidth:450){
               ...GatsbyContentfulFluid_withWebp
+              ...GatsbyContentfulFluid
             }
           }
           colors
