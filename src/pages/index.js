@@ -22,7 +22,6 @@ export const query = graphql`
       	image{
           fluid(maxWidth: 1920){
             ...GatsbyContentfulFluid_withWebp
-            ...GatsbyContentfulFluid
 
           }
         }
@@ -36,7 +35,6 @@ export const query = graphql`
           featureImage{
             fluid(maxWidth:600){
               ...GatsbyContentfulFluid_withWebp
-              ...GatsbyContentfulFluid
             }
           }
           alignmentPosition
@@ -57,7 +55,6 @@ export const query = graphql`
             thumbnail {
               fluid(maxWidth: 387) {
                 ...GatsbyContentfulFluid_withWebp
-                ...GatsbyContentfulFluid
 
               }
             }
