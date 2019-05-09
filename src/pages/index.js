@@ -21,7 +21,7 @@ export const query = graphql`
       node {  
         id
       	image{
-          fluid(maxWidth: 1920){
+          fluid(maxWidth: 1919){
             ...GatsbyContentfulFluid_withWebp
 
           }
