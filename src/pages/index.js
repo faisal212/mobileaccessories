@@ -20,8 +20,9 @@ export const query = graphql`
       node {  
         id
       	image{
-          fluid{
-            ...GatsbyContentfulFluid_tracedSVG
+          fluid(maxWidth: 1920){
+            ...GatsbyContentfulFluid_withWebp
+
           }
         }
       }
@@ -32,8 +33,8 @@ export const query = graphql`
         node { 
           id
           featureImage{
-            fluid{
-              ...GatsbyContentfulFluid_tracedSVG
+            fluid(maxWidth:600){
+              ...GatsbyContentfulFluid_withWebp
             }
           }
           alignmentPosition
@@ -53,7 +54,8 @@ export const query = graphql`
             title
             thumbnail {
               fluid(maxWidth: 387) {
-                ...GatsbyContentfulFluid_tracedSVG
+                ...GatsbyContentfulFluid_withWebp
+
               }
             }
             videoId

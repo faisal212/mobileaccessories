@@ -16,8 +16,8 @@ export default function Carousel({ items }) {
   return (
     <CarouselWrapper {...params}>
     <Swiper>
-    {items.edges.map((data, i) => (
-        <div className="swiper-slider" key={i}> 
+    {items.edges.map((data) => (
+        <div className="swiper-slider" key={data.node.id}> 
              <Img
              
               fluid={data.node.image.fluid}

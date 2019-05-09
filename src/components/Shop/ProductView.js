@@ -15,7 +15,7 @@ export default function ProductView({item}) {
         <span className="price">Rs {item.price.toLocaleString()}</span>
         {
           (item.colors !== null) && (
-            <ul class="colors">
+            <ul className="colors">
               {
                 item.colors.map((color) => (
                   <li key={item.id + color} style={{background: color}}></li>

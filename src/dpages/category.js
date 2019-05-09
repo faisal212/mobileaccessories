@@ -65,7 +65,7 @@ export const query = graphql`
           slug
           featureImage{ 
             fluid(maxWidth:450){
-              ...GatsbyContentfulFluid_tracedSVG
+              ...GatsbyContentfulFluid_withWebp
             }
           }
           colors
