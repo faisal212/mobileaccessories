@@ -9,7 +9,6 @@
     "gatsby": "^2.3.31",
     "gatsby-background-image": "^0.4.1",
     "gatsby-image": "^2.0.40",
-    "gatsby-plugin-guess-js": "^1.0.6",
     "gatsby-plugin-manifest": "^2.1.1",
     "gatsby-plugin-netlify": "^2.0.16",
     "gatsby-plugin-offline": "^2.1.0",
