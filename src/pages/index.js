@@ -1,4 +1,5 @@
 import React from "react"
+import '../assets/css/swiper.min.css';
 import  'react-modal-video/css/modal-video.min.css';
 import { graphql } from "gatsby"
 import Layout from "../components/layout"

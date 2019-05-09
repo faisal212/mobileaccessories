@@ -31,17 +31,7 @@ function SEO({ description, lang, meta, keywords, title ,isHome }) {
   
   const links = [];
   
-  if(isHome ){
-    const swiper = {
-      rel:"stylesheet",
-      type:"text/css",
-      href: "https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css"
-    };
-
-   
-    links.push(swiper);
-
-  }
+  
   return (
     <Helmet
       htmlAttributes={{
