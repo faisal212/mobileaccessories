@@ -8,9 +8,7 @@ export default class index extends Component {
     navbarOpen: false
   };
 
-  constructor(props) {
-    super(props);
-  }
+
   handleNavbar = () => {
     this.setState({
         navbarOpen: !this.state.navbarOpen

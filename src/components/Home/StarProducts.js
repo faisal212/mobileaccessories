@@ -3,25 +3,27 @@ import Img from "gatsby-image"
 import styled from 'styled-components';
 import  {headingFont,transObject} from '../../utils/styles';
 import { Container} from 'react-grid-system';
+import {Link} from 'gatsby';
 
 import SectionHeading from '../Globals/SectionHeading';
 
 export default function StarProducts({ items }) {
 
-
     const {edges} = items;
+
     return (
         <Container>
             <SectionHeading title={`Star Products`}/>
           <StarProductsWrapper>
               <div className="left-side equal-height">
-                    <StarProductItem node={edges[3].node}/>
+                    <StarProductItem node={edges.find(data => data.node.alignmentPosition === 1).node}/>
               </div>
               <div className="right-side equal-height">
-                    <StarProductItem node={edges[1].node}/>
-                    <StarProductItem node={edges[0].node}/>
-                    <StarProductItem node={edges[2].node}/>
+                    <StarProductItem node={edges.find(data => data.node.alignmentPosition === 4).node}/>
+                    <StarProductItem node={edges.find(data => data.node.alignmentPosition === 2).node}/>
+                    <StarProductItem node={edges.find(data => data.node.alignmentPosition === 3).node}/>
               </div>
+            
           </StarProductsWrapper>
         </Container>
     )
@@ -102,7 +104,7 @@ const StarProductsWrapper = styled.div`
 
  function StarProductItem({node}) {
   return (
-      <a className="star-item-wrapper">
+      <Link className="star-item-wrapper">
         <Img
           fluid={node.featureImage.fluid}
         />
@@ -110,7 +112,7 @@ const StarProductsWrapper = styled.div`
             <h3>{node.product.title}</h3>
             <p>Rs {node.product.price.toLocaleString()}</p>
         </div>
-    </a>
+    </Link>
 
 
   )
