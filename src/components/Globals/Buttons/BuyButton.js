@@ -4,11 +4,11 @@ import {colors} from '../../../utils/styles';
 export default function BuyButton({product}) {
   return (
     <BuyButtonWrapper
-                class="snipcart-add-item buybutton"
+                class="snipcart-add-item"
                 data-item-id={product.id}
                 data-item-name={product.title}
                 data-item-price={product.price}
-                data-item-url={`https://${process.env.SITE_DOMAIN}/${product.category.slug}/products/${product.slug}`}
+                data-item-url={`https://mobileaccessories.netlify.com/${product.category.slug}/products/${product.slug}`}
                 >
                 Buy Now
     </BuyButtonWrapper>
