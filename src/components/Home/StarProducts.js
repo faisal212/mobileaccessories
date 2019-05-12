@@ -104,7 +104,7 @@ const StarProductsWrapper = styled.div`
 
  function StarProductItem({node}) {
   return (
-      <Link className="star-item-wrapper">
+      <Link to="/" className="star-item-wrapper">
         <Img
           fluid={node.featureImage.fluid}
         />
@@ -117,3 +117,4 @@ const StarProductsWrapper = styled.div`
 
   )
 }
+ 

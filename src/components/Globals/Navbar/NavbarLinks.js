@@ -34,7 +34,7 @@ export default class NavbarLinks extends Component {
                     {
                         this.state.links.map(item => (
                             <li key={item.id}>
-                                <Link swipe direction={item.id === 0 ? 'down' : 'right'} top="exit" duration={0.3} to={item.path} className="nav-link">
+                                <Link  to={item.path} className="nav-link">
                                     {item.name}
                                 </Link >
                             </li>
