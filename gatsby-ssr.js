@@ -5,27 +5,27 @@
  */
 
 // You can delete this file if you're not using it
-import React from "react";
+// import React from "react";
 
-export const onRenderBody = ({ setHeadComponents }) => {
-    setHeadComponents([
-        <link
-            rel="dns-prefetch"
-            key="dns-prefetch-snipcart-cdn"
-            href="https://cdn.snipcart.com"
-            crossorigin
-        />,
-        <link
-            rel="preconnect"
-            key="preconnect-snipcart-app"
-            href="https://app.snipcart.com"
-            crossorigin="crossorigin"
-        />,
-        <link 
-            rel="dns-prefetch"
-            key="dns-prefetch-images-cdn"
-            href="https://images.ctfassets.net"
-            crossorigin
-        />
-    ]);
-};
+// export const onRenderBody = ({ setHeadComponents }) => {
+//     setHeadComponents([
+//         <link
+//             rel="dns-prefetch"
+//             key="dns-prefetch-snipcart-cdn"
+//             href="https://cdn.snipcart.com"
+//             crossorigin
+//         />,
+//         <link
+//             rel="preconnect"
+//             key="preconnect-snipcart-app"
+//             href="https://app.snipcart.com"
+//             crossorigin="crossorigin"
+//         />,
+//         <link 
+//             rel="dns-prefetch"
+//             key="dns-prefetch-images-cdn"
+//             href="https://images.ctfassets.net"
+//             crossorigin
+//         />
+//     ]);
+// };
