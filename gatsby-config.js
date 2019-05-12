@@ -26,6 +26,7 @@ module.exports = {
         // Add any options here
       },
     },
+
     {
       resolve: `gatsby-source-contentful`,
       options: {
@@ -33,6 +34,13 @@ module.exports = {
         // Learn about environment variables: https://gatsby.dev/env-vars
         accessToken: process.env.ACCESS_TOKEN,
       },
+    },
+    {
+      resolve: 'gatsby-plugin-snipcart',
+      options: {
+        apiKey: process.env.SNIPCART_API,
+        autopop: true
+      }
     },
     {
       resolve: `gatsby-plugin-prefetch-google-fonts`,

@@ -38,6 +38,9 @@ const GlobalStyle = createGlobalStyle`
   padding: 0;
   box-sizing: border-box;
 }
+.background-white{
+  background: #ffffff;
+}
 html{
   font-size: 16px;
 }
@@ -52,15 +55,27 @@ html{
 }
 h1,h2,h3,h4,h5,h6{
   font-family:${headingFont};
+  font-weight: 400
+
 
 }
 body{
   font-family: 'Lato', sans-serif;
   font-weight: 400;
-  font-size: 0.875rem;
+  font-size: 13px;
   line-height: 1.5;
   color: ${colors.mainBlack};
   background: #f5f5f5;
+
+}
+.large-image-container{
+  z-index:1200 !important;
+}
+p,button{
+  font-weight: 400;
+  font-family: 'Lato', sans-serif;
+  
+
 
 }
 .container {

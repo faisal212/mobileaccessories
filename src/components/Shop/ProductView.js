@@ -8,7 +8,7 @@ import {colors,robotoFont} from '../../utils/styles';
 export default function ProductView({item}) {
   return (
     <ProductViewWrapper>
-    <Link to='/' className="link">
+    <Link to={`${item.category.slug}/products/${item.slug}`} className="link">
     <Img fluid={item.featureImage.fluid} className="product-img"/>
       <div className="inner-product-header">
         <h2>{item.title}</h2>

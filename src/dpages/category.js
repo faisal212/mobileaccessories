@@ -1,5 +1,7 @@
 import React from 'react'
 import { graphql } from "gatsby"
+import SEO from "../components/seo"
+
 import Layout from "../components/layout"
 import ListHeading from '../components/Shop/ListHeading';
 import { Container, Row, Col } from 'react-grid-system';
@@ -27,6 +29,8 @@ export default class category extends React.Component {
     const data = this.props.data.allContentfulCategory.edges[0];
     return (
       <Layout isHome={false}>
+        <SEO title={`${data.node.title} Mobile cases`} keywords={[`categories`, `cases`, `mobile accessories`,'mobileaccessories' ,`${data.node.title}` ]} />
+
         <ListHeading title={data.node.title} />
         <Container style={{padding: '50px 0'}}>
           <Row>
@@ -58,10 +62,12 @@ export const query = graphql`
           featureImage{ 
             fluid(maxWidth:450){
               ...GatsbyContentfulFluid_withWebp
-              ...GatsbyContentfulFluid
             }
           }
           colors
+          category{
+              slug
+          }
         }
       }
     }

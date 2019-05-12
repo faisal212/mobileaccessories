@@ -14,12 +14,12 @@ export default class NavbarLinks extends Component {
             },
             {
                 id: 1,
-                path: '/mobile-cases/samsung',
+                path: '/samsung',
                 name: 'samsung'
             },
             {
                 id: 2,
-                path: '/mobile-cases/apple',
+                path: '/apple',
                 name: 'apple'
             },
         ]
@@ -102,7 +102,7 @@ flex: auto;
 			}
 			@media (min-width:768px) {
 					line-height: 5.5rem;
-					font-size: 1rem;
+					font-size: 0.8125rem;
 
 			}
 
