@@ -4,7 +4,7 @@ import {colors} from '../../../utils/styles';
 export default function BuyButton({product}) {
   return (
     <BuyButtonWrapper
-                class="snipcart-add-item"
+                class="snipcart-add-item buybutton"
                 data-item-id={product.id}
                 data-item-name={product.title}
                 data-item-price={product.price}
