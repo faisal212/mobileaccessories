@@ -12,6 +12,7 @@ export const onRenderBody = ({ setHeadComponents }) => {
     <link
       rel="preconnect"
       href="https://cdn.snipcart.com"
+      crossorigin="crossorigin"
     />,
   ]);
 };
