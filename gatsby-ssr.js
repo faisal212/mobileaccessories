@@ -1,3 +1,5 @@
+import React from 'react';
+
 import Firebase,{FirebaseContext} from "./src/services/firebase";
 
 /**
