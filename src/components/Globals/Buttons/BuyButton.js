@@ -2,13 +2,14 @@ import React from 'react'
 import styled from 'styled-components';
 import {colors} from '../../../utils/styles';
 export default function BuyButton({product}) {
+  const siteUrl = process.env.SITE_DOMAIN;
   return (
     <BuyButtonWrapper
                 className="snipcart-add-item"
                 data-item-id={product.id}
                 data-item-name={product.title}
                 data-item-price={product.price}
-                data-item-url={`https://mobileaccessories.netlify.com/${product.category.slug}/products/${product.slug}`}
+                data-item-url={`https://${typeof siteUrl !== undefined ? siteUrl : 'mobileaccessories.netlify.com'}/${product.category.slug}/products/${product.slug}`}
                 >
                 Buy Now
     </BuyButtonWrapper>

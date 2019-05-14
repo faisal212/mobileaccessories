@@ -9,6 +9,7 @@ const IndexPage = ({ data }) => (
   <Layout isHome={true}>
     <SEO title="Home" keywords={[`home`, `cases`, `mobile accessories`,'mobileaccessories' ]} isHome={true} />
     <Carousel items={data.carousel} />
+  
     <StarProducts items ={data.starProducts}/>
     <Videos items={data.videos}/>
   </Layout> 

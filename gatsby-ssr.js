@@ -1,3 +1,5 @@
+import Firebase,{FirebaseContext} from "./src/services/firebase";
+
 /**
  * Implement Gatsby's SSR (Server Side Rendering) APIs in this file.
  *
@@ -29,3 +31,7 @@
 //         />
 //     ]);
 // };
+
+export const wrapRootElement = ({element}) => (
+    <FirebaseContext.Provider value={new Firebase()}>{element}</FirebaseContext.Provider>
+);

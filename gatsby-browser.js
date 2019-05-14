@@ -1,3 +1,6 @@
+import React from 'react';
+import Firebase,{FirebaseContext} from "./src/services/firebase";
+
 /**
  * Implement Gatsby's Browser APIs in this file.
  *
@@ -15,4 +18,8 @@ export const onServiceWorkerUpdateReady = () => {
     if (answer === true) {
       window.location.reload()
     }
-  }
+}
+
+export const wrapRootElement = ({element}) => (
+  <FirebaseContext.Provider value={new Firebase()}>{element}</FirebaseContext.Provider>
+);

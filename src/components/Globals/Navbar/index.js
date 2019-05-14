@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import styled from 'styled-components';
 import NavbarHeader from './NavbarHeader';
 import NavbarLinks from './NavbarLinks';
+import NavButtons from './NavButtons';
+import {colors} from '../../../utils/styles';
 
 export default class index extends Component {
   state = {
@@ -21,6 +23,7 @@ export default class index extends Component {
         <div className="container">
           <NavbarHeader handleNavbar={this.handleNavbar} />
           <NavbarLinks  navbarOpen={this.state.navbarOpen} handleNavbar={this.handleNavbar}/>
+          <NavButtons className="nav-buttons"/>
         </div>
       </NavWrapper>
     )
@@ -37,16 +40,19 @@ display :flex;
 align-items: center;
 justify-content: center;
 border-bottom: 1px solid #e1e1e1;
-.container {
-  @media (min-width:768px) {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+background: #FF6709;
+@media (min-width:768px) {
+  .container {
+      justify-content: center;
   } 
-    
+  background: #fff;
 }
 
 
-  
+.container{
+  display: flex;
+  align-items: center;
+}   
+
 
 `;
