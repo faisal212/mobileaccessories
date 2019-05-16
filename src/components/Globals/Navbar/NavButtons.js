@@ -5,7 +5,7 @@ import {colors} from '../../../utils/styles';
 export default function NavButtons() {
   return (
    <NavButtonsWrapper>
-          <IoIosCart class="cart icon snipcart-checkout" />
+          <IoIosCart className="cart icon snipcart-checkout" />
 
    </NavButtonsWrapper>
   )

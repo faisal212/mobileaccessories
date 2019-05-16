@@ -101,6 +101,18 @@ a {
   opacity: unset !important;
  
 }
+
+.firebaseui-button {
+  background: ${colors.mainOrange} !important;
+}
+#firebaseui_container{
+  position: fixed;
+  left:50%;
+  transform:translateX(-50%);
+  top: 100px;
+  z-index: 15;
+  box-shadow: 0 0 12px 2111px rgba(0,0,0,.35);
+}
 `
 
 export default Layout

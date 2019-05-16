@@ -21,12 +21,19 @@ class Firebase {
         this.uiConfig = {
             //configure FirebaseUI
             signInFlow: 'popup',
+            callbacks: {
+              // Avoid redirects after sign-in.
+              signInSuccessWithAuthResult: (user) => {
+                console.log(user);
+                return false;
+              }
+            },
             signInOptions:[
                 {
                   provider: app.auth.PhoneAuthProvider.PROVIDER_ID,
                   recaptchaParameters: {
                     type: 'image', // 'audio'
-                    size: 'normal', // 'invisible' or 'compact'
+                    size: 'invisible', // 'invisible' or 'compact'
                     badge: 'bottomleft' //' bottomright' or 'inline' applies to invisible.
                   },
                   defaultCountry: 'PK', // Set default country to the United Kingdom (+44).
@@ -57,6 +64,7 @@ class Firebase {
                 }
               ]
           }
+          
         }
     }
 }
