@@ -17,8 +17,8 @@ export const onRenderBody = ({ setHeadComponents }) => {
             crossorigin="crossorigin"
         />,
         <link
-            rel="preconnect"
-            key="preconnect-snipcart-app"
+        rel="dns-prefetch"
+        key="prefetch-snipcart-app"
             href="https://app.snipcart.com"
             crossorigin="crossorigin"
         />,
@@ -26,7 +26,8 @@ export const onRenderBody = ({ setHeadComponents }) => {
             rel="dns-prefetch"
             key="dns-prefetch-images-cdn"
             href="https://images.ctfassets.net"
-            rel="dns-prefetch"
+            crossorigin="crossorigin"
+
         />
     ]);
 };
