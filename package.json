@@ -24,7 +24,6 @@
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-google-button": "^0.5.3",
     "react-grid-system": "^4.4.5",
     "react-helmet": "^5.2.0",
     "react-icons": "^3.6.1",
