@@ -4,8 +4,11 @@ import {  IoIosCart} from 'react-icons/io';
 import {colors} from '../../../utils/styles';
 
 export default function NavButtons() {
-  const user = window.Snipcart.api.user.current();
 
+  let  user = undefined;
+  if(typeof window !== 'undefined'){
+    user = window.Snipcart.api.user.current();
+  }
   return (
    <NavButtonsWrapper>
           <IoIosCart className="cart icon snipcart-checkout" />
