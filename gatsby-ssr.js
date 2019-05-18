@@ -14,7 +14,6 @@ export const onRenderBody = ({ setHeadComponents }) => {
             rel="dns-prefetch"
             key="dns-prefetch-snipcart-cdn"
             href="https://cdn.snipcart.com"
-            crossorigin="crossorigin"
         />
     ]);
 };
