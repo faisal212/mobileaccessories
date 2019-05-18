@@ -6,7 +6,6 @@
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.0",
-    "firebase": "^6.0.2",
     "gatsby": "^2.3.31",
     "gatsby-image": "^2.0.40",
     "gatsby-plugin-manifest": "^2.1.1",
@@ -25,7 +24,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-firebaseui": "^3.1.2",
+    "react-google-button": "^0.5.3",
     "react-grid-system": "^4.4.5",
     "react-helmet": "^5.2.0",
     "react-icons": "^3.6.1",

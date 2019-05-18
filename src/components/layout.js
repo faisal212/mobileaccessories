@@ -5,26 +5,20 @@
  * See: https://www.gatsbyjs.org/docs/static-query/
  */
 
-import React ,{useContext} from "react"
+import React  from "react"
 import PropTypes from "prop-types"
 import { createGlobalStyle } from 'styled-components';
 import {colors,headingFont} from '../utils/styles';
 import Navbar from './Globals/Navbar';
 import Footer from './Globals/Footer';
 import { ScreenClassProvider} from 'react-grid-system';
-import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
-import {FirebaseContext} from '../services/firebase';
 const Layout = ({ children ,isHome}) => {
-   const Firebase = useContext(FirebaseContext);
   return(
   <React.Fragment>
     <GlobalStyle/>
     <Navbar isHome={isHome}/>
     
     <ScreenClassProvider>
-    <StyledFirebaseAuth uiConfig={Firebase.uiConfig} 
-        firebaseAuth={Firebase.auth}
-      />
         {children}  
     </ScreenClassProvider>    
     <Footer/>
@@ -63,6 +57,9 @@ h1,h2,h3,h4,h5,h6{
   font-weight: 400
 
 
+}
+a{
+  cursor: pointer;
 }
 body{
   font-family: 'Lato', sans-serif;
@@ -112,6 +109,7 @@ a {
   top: 100px;
   z-index: 15;
   box-shadow: 0 0 12px 2111px rgba(0,0,0,.35);
+  
 }
 `
 

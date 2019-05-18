@@ -1,5 +1,6 @@
 import React from 'react';
-import Firebase,{FirebaseContext} from "./src/services/firebase";
+// import Firebase,{FirebaseContext} from "./src/services/firebase";
+// import AuthContextProvider from './src/components/Globals/AuthContextProvider';
 
 /**
  * Implement Gatsby's Browser APIs in this file.
@@ -20,6 +21,8 @@ export const onServiceWorkerUpdateReady = () => {
     }
 }
 
-export const wrapRootElement = ({element}) => (
-  <FirebaseContext.Provider value={new Firebase()}>{element}</FirebaseContext.Provider>
-);
+// export const wrapRootElement = ({element}) => (
+//   <FirebaseContext.Provider value={new Firebase()}>
+//     <AuthContextProvider >{element}</AuthContextProvider>
+//   </FirebaseContext.Provider>
+// );
