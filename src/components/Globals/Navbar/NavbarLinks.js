@@ -35,7 +35,7 @@ export default class NavbarLinks extends Component {
                     {
                         this.state.links.map(item => (
                             <li key={item.id}>
-                                <AniLink  fade to={item.path} className="nav-link ">
+                                <AniLink  fade to={item.path} className="nav-link ripple">
                                     {item.name}
                                 </AniLink >
                             </li>
@@ -61,7 +61,8 @@ flex: auto;
         background: #fff;
         transform: ${props => (props.open ? 'transform: translate3d(40px, 0, 0)' : 'translate3d(111%, 0%, 0px)')} ;
 		transition: all 200ms cubic-bezier(0.61, 0.92, 0.68, 1.14) 0s;
-		box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.25);
+        box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.25);
+        z-index: 100;
     }
 
    ul {
