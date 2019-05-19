@@ -18,10 +18,9 @@ export const onRenderBody = ({ setHeadComponents }) => {
         />,
         <link
         rel="preconnect"
-        key="preconnect-contentful-image"
+        key="preconnect-contentful-images"
         href="https://images.ctfassets.net"
         crossorigin='crossorigin'
-
     />
     ]);
 };
