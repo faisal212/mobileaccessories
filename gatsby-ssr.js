@@ -11,9 +11,11 @@ import React from "react";
 export const onRenderBody = ({ setHeadComponents }) => {
     setHeadComponents([
         <link
-            rel="dns-prefetch"
-            key="dns-prefetch-snipcart-cdn"
+            rel="preload"
+            key="preload-snipcart-cdn"
             href="https://cdn.snipcart.com"
+            crossOrigin='anonymous'
+
         />
     ]);
 };
