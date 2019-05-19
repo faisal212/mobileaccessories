@@ -14,7 +14,7 @@ export const onRenderBody = ({ setHeadComponents }) => {
         rel="preconnect"
         key="preconnect-snipcartapp"
         href="https://app.snipcart.com"
-        crossorigin='crossorigin'
+        crossorigin
     />,
         <link
             rel="preconnect"
