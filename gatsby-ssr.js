@@ -11,8 +11,8 @@ import React from "react";
 export const onRenderBody = ({ setHeadComponents }) => {
     setHeadComponents([
         <link
-            rel="preload"
-            key="preload-snipcart-cdn"
+            rel="preconnect"
+            key="preconnect-snipcart-cdn"
             href="https://cdn.snipcart.com"
             crossOrigin='anonymous'
 
