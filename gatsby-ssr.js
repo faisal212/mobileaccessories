@@ -14,13 +14,13 @@ export const onRenderBody = ({ setHeadComponents }) => {
             rel="preconnect"
             key="preconnect-snipcart-cdn"
             href="https://cdn.snipcart.com"
-            crossOrigin='anonymous'
+            crossorigin='anonymous'
         />,
         <link
         rel="preconnect"
         key="preconnect-contentful-image"
         href="https://images.ctfassets.net"
-        crossOrigin='anonymous'
+        crossorigin='crossorigin'
 
     />
     ]);
