@@ -11,17 +11,18 @@ import React from "react";
 export const onRenderBody = ({ setHeadComponents }) => {
     setHeadComponents([
         <link
+        rel="preconnect"
+        key="preconnect-snipcartapp"
+        href="https://app.snipcart.com"
+        crossorigin='crossorigin'
+    />,
+        <link
             rel="preconnect"
             key="preconnect-snipcart-cdn"
             href="https://cdn.snipcart.com"
             crossorigin='anonymous'
-        />,
-        <link
-        rel="preconnect"
-        key="preconnect-contentful-images"
-        href="https://images.ctfassets.net"
-        crossorigin='crossorigin'
-    />
+        />
+     
     ]);
 };
 
