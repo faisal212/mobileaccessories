@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
-import {Link} from 'gatsby';
+import AniLink from "gatsby-plugin-transition-link/AniLink";
 import Img from "gatsby-image"
 import {colors,robotoFont} from '../../utils/styles';
 
@@ -8,7 +8,7 @@ import {colors,robotoFont} from '../../utils/styles';
 export default function ProductView({item}) {
   return (
     <ProductViewWrapper>
-    <Link to={`/${item.category.slug}/products/${item.slug}`} className="link">
+    <AniLink fade to={`/${item.category.slug}/products/${item.slug}`} className="link ">
     <Img fluid={item.featureImage.fluid} className="product-img"/>
       <div className="inner-product-header">
         <h2>{item.title}</h2>
@@ -25,7 +25,7 @@ export default function ProductView({item}) {
           )
         }
       </div>
-    </Link>
+    </AniLink>
   </ProductViewWrapper>
   )
 }

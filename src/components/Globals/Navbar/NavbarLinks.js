@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import styled from 'styled-components';
 import { IoIosClose } from 'react-icons/io';
-import {Link} from 'gatsby';
+import AniLink from "gatsby-plugin-transition-link/AniLink";
+
 import * as styles from '../../../utils/styles';
 
 export default class NavbarLinks extends Component {
@@ -34,9 +35,9 @@ export default class NavbarLinks extends Component {
                     {
                         this.state.links.map(item => (
                             <li key={item.id}>
-                                <Link  to={item.path} className="nav-link">
+                                <AniLink  fade to={item.path} className="nav-link ">
                                     {item.name}
-                                </Link >
+                                </AniLink >
                             </li>
                         ))
                     }
