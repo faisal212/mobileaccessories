@@ -7,6 +7,7 @@ export default function NavButtons() {
 
   let  user = undefined;
   if(typeof window !== 'undefined'){
+    if(typeof window.Snipcart.api !== 'undefined')
     user = window.Snipcart.api.user.current();
   }
   return (
