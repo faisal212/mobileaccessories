@@ -16,7 +16,7 @@ export default function NavButtons() {
         
         
           <a href="#" className="snipcart-user-profile">
-          {typeof user !== "undefined" ? user.email: 'user profile'}
+          {typeof user !== "undefined" ? user.email: 'Login & Signup'}
 </a>
    </NavButtonsWrapper>
   )
@@ -31,6 +31,8 @@ const NavButtonsWrapper = styled.div`
 
   position: absolute;
   right: 15px;
+  display: flex;
+  align-items: center;
 
 
 @media (min-width:768px) {
@@ -41,6 +43,13 @@ const NavButtonsWrapper = styled.div`
     color: ${colors.mainOrange};
 
   }
-}
+  .snipcart-user-profile{
+  color: inherit !important;
 
+}
+}
+.snipcart-user-profile{
+  color: #fff;
+
+}
 `;

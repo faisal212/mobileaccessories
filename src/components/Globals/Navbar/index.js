@@ -19,7 +19,7 @@ export default class index extends Component {
   render() {
     const { isHome } = this.props;
     return (
-      <NavWrapper className="background-white" isHome={isHome} navbarOpen={this.state.navbarOpen} >
+      <NavWrapper  isHome={isHome} navbarOpen={this.state.navbarOpen} >
         <div className="container">
           <NavbarHeader handleNavbar={this.handleNavbar} />
           <NavbarLinks  navbarOpen={this.state.navbarOpen} handleNavbar={this.handleNavbar}/>

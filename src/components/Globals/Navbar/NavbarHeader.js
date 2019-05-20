@@ -6,11 +6,13 @@ import styled from 'styled-components';
 
 export default class NavbarHeader extends Component {
     render() {
+        
         const { handleNavbar } = this.props;
         return (
             <HeaderWrapper>
+                
                 <FaAlignRight className="toggle-icon" onClick={() => { handleNavbar() }} />
-
+                {typeof window !== 'undefined' ? (<span onClick={() => { window.history.back();}}>go back</span>) : ''}
                 <Link to='/'>
                     <img src={logo} alt="company name" />
                 </Link>
