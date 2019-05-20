@@ -21,7 +21,7 @@ export default class index extends Component {
     return (
       <NavWrapper  isHome={isHome} navbarOpen={this.state.navbarOpen} >
         <div className="container">
-          <NavbarHeader handleNavbar={this.handleNavbar} />
+          <NavbarHeader handleNavbar={this.handleNavbar}  isHome={isHome}/>
           <NavbarLinks  navbarOpen={this.state.navbarOpen} handleNavbar={this.handleNavbar}/>
           <NavButtons className="nav-buttons"/>
         </div>
@@ -41,11 +41,14 @@ align-items: center;
 justify-content: center;
 border-bottom: 1px solid #e1e1e1;
 background: #FF6709;
+color: #fff;
+
 @media (min-width:768px) {
   .container {
       justify-content: center;
   } 
   background: #fff;
+  color:inherit;
 }
 
 

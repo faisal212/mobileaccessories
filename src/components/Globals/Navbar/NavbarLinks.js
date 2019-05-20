@@ -30,6 +30,7 @@ export default class NavbarLinks extends Component {
 		const {handleNavbar} = this.props;
         return (
             <LinkWrapper className="menu-content" open={this.props.navbarOpen}>
+                <div className="bar">Mobile Accessories</div>
                 <IoIosClose className="close-button" onClick={() => { handleNavbar() }}  />
                 <ul>
                     {
@@ -51,18 +52,30 @@ export default class NavbarLinks extends Component {
 const LinkWrapper = styled.div`
 display: flex;
 flex: auto;
+flex-direction: column;
+    .bar {
+        display:none;
+        text-align: center;
+        padding: 10px 20px;
+        font-size: 1.25rem;
+        text-align:center;
+        background: ${styles.colors.mainOrange};
+    }
     @media(max-width: 768px){
         position: fixed;
         top: 0;
-        right: 0;
+        left: 0;
         max-width: 320px;
         width: 70vw;
         height: 100%;
         background: #fff;
-        transform: ${props => (props.open ? 'transform: translate3d(40px, 0, 0)' : 'translate3d(111%, 0%, 0px)')} ;
+        transform: ${props => (props.open ? 'transform: translate3d(40px, 0, 0)' : 'translate3d(-111%, 0%, 0px)')} ;
 		transition: all 200ms cubic-bezier(0.61, 0.92, 0.68, 1.14) 0s;
         box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.25);
         z-index: 100;
+        .bar{
+            display: block;
+        }
     }
 
    ul {

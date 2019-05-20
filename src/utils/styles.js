@@ -8,7 +8,7 @@ export const colors = {
   mainGrey: `gray`,
   darkGrey: '#e1e1e1',
   lightGrey: `#fcfcfc`,
-  mainOrange: `#f1692e`
+  mainOrange: `#FF6709`
 }
 export const headingFont = `  font-family: 'Montserrat', sans-serif`;
 export const robotoFont = `font-family: 'Roboto', sans-serif`;

@@ -32,7 +32,7 @@ const NavButtonsWrapper = styled.div`
   position: absolute;
   right: 15px;
   display: flex;
-  align-items: center;
+    align-items: center;
 
 
 @media (min-width:768px) {

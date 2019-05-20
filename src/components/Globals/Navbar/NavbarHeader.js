@@ -1,18 +1,23 @@
 import React, { Component } from 'react'
 import { Link } from 'gatsby';
 import logo from '../../../images/logo.png';
-import { FaAlignRight, FaOpencart} from 'react-icons/fa';
+import { IoIosArrowRoundBack,IoIosMenu} from 'react-icons/io';
 import styled from 'styled-components';
 
 export default class NavbarHeader extends Component {
     render() {
         
-        const { handleNavbar } = this.props;
+        const { handleNavbar, isHome} = this.props;
         return (
             <HeaderWrapper>
                 
-                <FaAlignRight className="toggle-icon" onClick={() => { handleNavbar() }} />
-                {typeof window !== 'undefined' ? (<span onClick={() => { window.history.back();}}>go back</span>) : ''}
+                {isHome ? 
+                    (<IoIosMenu className="toggle-icon icon" onClick={() => { handleNavbar() }} />
+                    ): (
+                         <span>{typeof window !== 'undefined' ? (<IoIosArrowRoundBack className="icon back-icon" onClick={() => { window.history.back();}} />) : ''}</span>
+
+                    )
+                }
                 <Link to='/'>
                     <img src={logo} alt="company name" />
                 </Link>
@@ -28,16 +33,16 @@ padding: 0.4rem 1rem;
 display: flex;
 align-items: center;
 
-.toggle-icon{
+.icon{
     cursor: pointer;
-
-    font-size: 1.75rem;
-    color: #fff;
+    font-size: 2rem;
     cursor: pointer;
     @media (min-width:768px) {
     display: none;
     }
 }
 
-
+.back-icon{
+    font-size: 3rem;
+}
 `;
