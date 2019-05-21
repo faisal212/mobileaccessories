@@ -5,6 +5,9 @@ import { IoIosArrowRoundBack,IoIosMenu} from 'react-icons/io';
 import styled from 'styled-components';
 
 export default class NavbarHeader extends Component {
+    goBack = () => {
+
+    }
     render() {
         
         const { handleNavbar, isHome} = this.props;
@@ -14,7 +17,7 @@ export default class NavbarHeader extends Component {
                 {isHome ? 
                     (<IoIosMenu className="toggle-icon icon" onClick={() => { handleNavbar() }} />
                     ): (
-                         <span>{typeof window !== 'undefined' ? (<IoIosArrowRoundBack className="icon back-icon" onClick={() => { window.history.back();}} />) : ''}</span>
+                         <span>{typeof window !== 'undefined' ? (<IoIosArrowRoundBack className="icon back-icon" onClick={this.goBack} />) : ''}</span>
 
                     )
                 }
