@@ -6,7 +6,13 @@ import styled from 'styled-components';
 
 export default class NavbarHeader extends Component {
     goBack = () => {
+        if(window.location.href.includes('#')){
+            window.history.go(-3);
 
+        }else{
+            window.history.back();
+
+        }
     }
     render() {
         
