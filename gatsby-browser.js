@@ -1,4 +1,3 @@
-import React from 'react';
 // import Firebase,{FirebaseContext} from "./src/services/firebase";
 // import AuthContextProvider from './src/components/Globals/AuthContextProvider';
 
@@ -26,3 +25,4 @@ export const onServiceWorkerUpdateReady = () => {
 //     <AuthContextProvider >{element}</AuthContextProvider>
 //   </FirebaseContext.Provider>
 // );
+

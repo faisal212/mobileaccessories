@@ -9,7 +9,12 @@ module.exports = {
   },
   plugins: [
     'gatsby-plugin-netlify',
-    `gatsby-plugin-transition-link`,
+    {
+      resolve: 'gatsby-v2-plugin-page-transitions',
+      options: {
+        transitionTime: 500
+      }
+    },
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,

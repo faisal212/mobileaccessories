@@ -19,6 +19,7 @@ export default class product extends React.Component {
 
 
   render() {
+    
     const {node} = this.props.data.allContentfulProducts.edges[0];
     return (
       <Layout isHome={false} className="background-white">

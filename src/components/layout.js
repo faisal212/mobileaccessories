@@ -12,6 +12,7 @@ import {colors,headingFont} from '../utils/styles';
 import Navbar from './Globals/Navbar';
 import Footer from './Globals/Footer';
 import { ScreenClassProvider} from 'react-grid-system';
+
 const Layout = ({ children ,isHome}) => {
   return(
   <React.Fragment>

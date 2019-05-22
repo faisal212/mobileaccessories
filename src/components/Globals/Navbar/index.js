@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import NavbarHeader from './NavbarHeader';
 import NavbarLinks from './NavbarLinks';
 import NavButtons from './NavButtons';
-import {colors} from '../../../utils/styles';
 
 export default class index extends Component {
   state = {

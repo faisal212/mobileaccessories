@@ -1,41 +1,40 @@
-import React, { Component } from 'react'
-import { Link } from 'gatsby';
+import React from 'react'
 import logo from '../../../images/logo.png';
 import { IoIosArrowRoundBack,IoIosMenu} from 'react-icons/io';
 import styled from 'styled-components';
+import {Link} from "gatsby";
 
-export default class NavbarHeader extends Component {
-    goBack = () => {
-        if(window.location.href.includes('#')){
-            window.history.go(-3);
+const goBack = () => {
+    if(window.location.href.includes('#')){
+        window.history.go(-3);
 
-        }else{
-            window.history.back();
+    }else{
+        window.history.back();
 
-        }
     }
-    render() {
-        
-        const { handleNavbar, isHome} = this.props;
+}
+
+export default function NavbarHeader({ handleNavbar, isHome} ) {
+        const isWindow = typeof window !== 'undefined';
+  
         return (
             <HeaderWrapper>
                 
                 {isHome ? 
                     (<IoIosMenu className="toggle-icon icon" onClick={() => { handleNavbar() }} />
                     ): (
-                         <span>{typeof window !== 'undefined' ? (<IoIosArrowRoundBack className="icon back-icon" onClick={this.goBack} />) : ''}</span>
+                         <span>{typeof isWindow ? ( 
+                         <IoIosArrowRoundBack className="icon back-icon" onClick={goBack}  />) : ''}</span>
 
                     )
                 }
-                <Link to='/'>
+                <Link   bg="#663399" to='/'>
                     <img src={logo} alt="company name" />
                 </Link>
 
             </HeaderWrapper>
-        )
-    }
+    )
 }
-
 const HeaderWrapper = styled.div`
 
 padding: 0.4rem 1rem;

@@ -6,6 +6,7 @@ import Layout from "../components/layout"
 import ListHeading from '../components/Shop/ListHeading';
 import { Container, Row, Col } from 'react-grid-system';
 import ProductView from '../components/Shop/ProductView';
+import MainTransition from '../components/Globals/MainTransition';
 
 export default class category extends React.Component {
 
@@ -28,7 +29,8 @@ export default class category extends React.Component {
   render() {
     const data = this.props.data.allContentfulCategory.edges[0];
     return (
-      <Layout isHome={false}>
+    <MainTransition>
+        <Layout isHome={false}>
         <SEO title={`${data.node.title} Mobile cases`} keywords={[`categories`, `cases`, `mobile accessories`,'mobileaccessories' ,`${data.node.title}` ]} />
 
         <ListHeading title={data.node.title} />
@@ -43,6 +45,8 @@ export default class category extends React.Component {
           </Row>
         </Container>
       </Layout>
+    
+    </MainTransition>
     )
   }
 }
