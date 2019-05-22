@@ -48,7 +48,6 @@ color: #fff;
   } 
   background: #fff;
   color:inherit;
-  position : absolute;
 }
 
 
