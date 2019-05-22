@@ -9,6 +9,7 @@ module.exports = {
   },
   plugins: [
     'gatsby-plugin-netlify',
+    'gatsby-plugin-lodash',
     {
       resolve: 'gatsby-v2-plugin-page-transitions',
       options: {

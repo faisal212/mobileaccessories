@@ -9,7 +9,7 @@ export default function MainTransition({ children }) {
         transitionStyles={{
             entering: {
                 position: 'relative',
-                opacity: 0.5,
+                opacity: 1,
               },
               entered: {
                 transition: `opacity ${timeout}ms ease-in-out`,
