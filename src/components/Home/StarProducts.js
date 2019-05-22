@@ -103,8 +103,9 @@ const StarProductsWrapper = styled.div`
 
 
  function StarProductItem({node}) {
+     
   return (
-      <Link to="/" className="star-item-wrapper">
+      <Link to={`/${node.product.category.slug}/products/${node.product.slug}`} className="star-item-wrapper ripple">
         <Img
           fluid={node.featureImage.fluid}
         />

@@ -46,6 +46,10 @@ export const query = graphql`
           product{
             title
             price
+            slug
+            category{
+              slug
+            }
           }
         
         }
