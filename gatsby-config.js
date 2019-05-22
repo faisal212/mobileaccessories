@@ -12,7 +12,7 @@ module.exports = {
     {
       resolve: 'gatsby-v2-plugin-page-transitions',
       options: {
-        transitionTime: 500
+        transitionTime: 250
       }
     },
     `gatsby-plugin-react-helmet`,

@@ -30,7 +30,7 @@ export default class index extends Component {
 }
 
 const NavWrapper = styled.nav`
-position: ${props => (props.isHome ? `absolute` : 'static')};
+position: relative;
 
 z-index: 12;
 width: 100%;
@@ -48,6 +48,7 @@ color: #fff;
   } 
   background: #fff;
   color:inherit;
+  position : absolute;
 }
 
 

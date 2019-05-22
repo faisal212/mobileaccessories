@@ -8,8 +8,8 @@ export default function MainTransition({ children }) {
         <PageTransition
         transitionStyles={{
             entering: {
-                position: `absolute`,
-                opacity: 0,
+                position: 'relative',
+                opacity: 0.5,
               },
               entered: {
                 transition: `opacity ${timeout}ms ease-in-out`,
