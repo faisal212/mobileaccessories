@@ -34,10 +34,10 @@ export default class category extends React.Component {
         <SEO title={`${data.node.title} Mobile cases`} keywords={[`categories`, `cases`, `mobile accessories`,'mobileaccessories' ,`${data.node.title}` ]} />
 
         <ListHeading title={data.node.title} />
-        <Container style={{padding: '50px 0'}}>
+        <Container style={{padding: '50px 0'}} className="category">
           <Row>
               {data.node.products.map((product) => (
-               <Col sm={3} key={product.id} >
+               <Col xs={6} sm={3} key={product.id} >
                    <ProductView  item={product}/>
                </Col>
               ))}

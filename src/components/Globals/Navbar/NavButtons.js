@@ -50,6 +50,6 @@ const NavButtonsWrapper = styled.div`
 }
 .snipcart-user-profile{
   color: #fff;
-
+  margin: 0 0.625rem;
 }
 `;

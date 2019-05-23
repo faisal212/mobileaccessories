@@ -50,6 +50,10 @@ html{
   .column-wrapper{
     padding: 0 5px !important;
   }
+  .category > div > div{
+    padding: 0  !important;
+
+  }
 }
 h1,h2,h3,h4,h5,h6{
   font-family:${headingFont};
@@ -137,6 +141,19 @@ a {
   transition: 0s;
 }
 
+
+.snip-layout .snip-btn{
+  background:${colors.mainOrange} !important;
+  color: #fff !important;
+}
+.snip-layout .snip-form__error{
+  background:${colors.mainOrange} !important;
+
+}
+.snip-layout{
+  font-family: 'Lato', sans-serif !important;
+
+}
 `;
 
 export default Layout

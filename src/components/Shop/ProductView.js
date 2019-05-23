@@ -69,4 +69,15 @@ h2{
   height: 15px;
   border-radius: 50%;
 }
+@media (max-width:767px) {
+  text-align:center;
+  .product-img{
+    height: 6.25rem;
+    width: 6.25rem;
+    margin:0 auto;
+  }
+  .colors{
+    display:none;
+  }
+}
 `;
