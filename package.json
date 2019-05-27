@@ -6,6 +6,7 @@
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
     "add": "^2.0.6",
+    "axios": "^0.18.0",
     "babel-plugin-styled-components": "^1.10.0",
     "gatsby": "^2.3.31",
     "gatsby-image": "^2.0.40",
@@ -36,6 +37,7 @@
     "yarn": "^1.16.0"
   },
   "devDependencies": {
+    "netlify-lambda": "^1.4.13",
     "prettier": "^1.17.0"
   },
   "keywords": [
@@ -48,6 +50,8 @@
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run develop",
     "serve": "gatsby serve",
+    "lambda:serve": "netlify-lambda serve src/lambda",
+    "lambda:build": "netlify-lambda build  src/lambda",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
   },
   "repository": {
