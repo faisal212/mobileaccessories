@@ -9,7 +9,7 @@ export default function BuyButton({product}) {
                 data-item-id={product.id}
                 data-item-name={product.title}
                 data-item-price={product.price}
-                data-item-url={`https://${typeof siteUrl !== undefined ? siteUrl : 'www.stayclassy.pk'}/${product.category.slug}/products/${product.slug}`}
+                data-item-url={`https://www.stayclassy.pk/${product.category.slug}/products/${product.slug}`}
                 >
                 Buy Now
     </BuyButtonWrapper>
