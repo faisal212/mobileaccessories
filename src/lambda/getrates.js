@@ -1,9 +1,10 @@
 
 const axios = require('axios');
 exports.handler = function(event,context,callback){
-    console.log(event.queryStringParameters);
  
-    if(event.httpMethod == 'Post'){
+    if(event.httpMethod == 'POST'){
+        console.log(event.body);
+
         //
         const body = {
             "rates": [{
