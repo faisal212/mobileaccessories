@@ -1,6 +1,7 @@
 
 const axios = require('axios');
 exports.handler = function(event,context,callback){
+
    const API_URL = 'https://api.github.com/users';
     const API_CLIET_ID = 'e2f02798325da16069e6';
     const API_CLIENT_SECRET = 'a20f42dd962cef721e47c3898951f5dc7ac1e4b5';
