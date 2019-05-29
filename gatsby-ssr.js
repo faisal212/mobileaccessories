@@ -27,7 +27,7 @@
 
 
 import React from 'react'
-
+import customJs  from './src/assets/js/custom';
 let warning = false
 
 export const onRenderBody = ({ setPostBodyComponents }) => {
@@ -50,7 +50,8 @@ export const onRenderBody = ({ setPostBodyComponents }) => {
 	}
 
 	const components = [
-		<script key='snipcartJs' defer src={options.js} id="snipcart" data-api-key={options.apiKey} data-autopop={options.autopop}></script>
+		<script key='snipcartJs' defer src={options.js} id="snipcart" data-api-key={options.apiKey} data-autopop={options.autopop}></script>,
+		<script key='customJs' defer src={customJs} id="customjs" ></script>,
 	]
 	if(options.jquery){
 		components.unshift(<script defer  key='snipcartJquery' src={options.jquery}></script>)
