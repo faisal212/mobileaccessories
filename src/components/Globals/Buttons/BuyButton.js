@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import {colors} from '../../../utils/styles';
 export default function BuyButton({product}) {
   const siteUrl = process.env.SITE_DOMAIN;
+  console.log(product.featureImage.fixed.src);
   return (
     <BuyButtonWrapper
                 className="snipcart-add-item"

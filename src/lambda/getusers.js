@@ -20,7 +20,7 @@ exports.handler = function(event,context,callback){
             .then(res => send(res.data))
             .catch(err => send(err));
     }
-    if(event.httpMethod == 'GET'){
+    if(event.httpMethod == 'GET'){ 
         //
         getUsers();
     }
