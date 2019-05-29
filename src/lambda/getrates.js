@@ -8,10 +8,8 @@ exports.handler = function(event,context,callback){
         //
         const body = {
             "rates": [{
+              
               "cost": 100,
-              "description": "100 rupees shipping"
-              }, {
-              "cost": 20,
               "description": "100 rupees shipping",
               "guaranteedDaysToDelivery": 5
               },

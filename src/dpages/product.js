@@ -59,6 +59,9 @@ export const query = graphql`
           fluid(maxWidth: 1024) {
             ...GatsbyContentfulFluid_withWebp
           }
+          fixed(width: 150,height:150){
+            ...GatsbyContentfulFixed_withWebp
+          }
         }
         category{
           slug

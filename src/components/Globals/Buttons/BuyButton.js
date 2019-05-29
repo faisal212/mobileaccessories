@@ -10,6 +10,7 @@ export default function BuyButton({product}) {
                 data-item-name={product.title}
                 data-item-price={product.price}
                 data-item-url={`https://www.stayclassy.pk/${product.category.slug}/products/${product.slug}`}
+                data-item-image={product.featureImage.fixed.src}
                 >
                 Buy Now
     </BuyButtonWrapper>
