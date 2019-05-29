@@ -3,7 +3,20 @@ import styled from 'styled-components';
 import {  IoIosCart} from 'react-icons/io';
 import {colors} from '../../../utils/styles';
 
-export default function NavButtons() {
+export default class NavButtons  extends React.Component{
+  state = {
+    count: 0
+  }
+  componentDidUpdate(){
+    window.Snipcart.subscribe('shippingaddress.changed', function (address) {
+      console.log(address);
+    });
+  } 
+  componentWillUnmount(){
+    window.Snipcart.unsubscribe('shippingaddress.changed');
+
+  }
+ render(){
 
   let  user = undefined;
   if(typeof window !== 'undefined'){
@@ -20,7 +33,10 @@ export default function NavButtons() {
 </a>
    </NavButtonsWrapper>
   )
+ }
 }
+
+
 
 const NavButtonsWrapper = styled.div`
 .icon{
