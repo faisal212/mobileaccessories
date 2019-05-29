@@ -8,12 +8,14 @@ export default class NavButtons  extends React.Component{
     count: 0
   }
   componentDidUpdate(){
-    window.Snipcart.subscribe('shippingaddress.changed', function (address) {
-      console.log(address);
-    });
+    window.Snipcart.subscribe('page.validating', function(ev, data) {
+      if((ev.type == 'shipping-address' || ev.type == 'billing-address') && !data.phone.match(/^((\+92)|(0092))-{0,1}\d{3}-{0,1}\d{7}$|^\d{11}$|^\d{4}-\d{7}$/)) {
+          ev.addError('phone', 'Please enter a valid pakistani number');
+      }
+  });
   } 
   componentWillUnmount(){
-    window.Snipcart.unsubscribe('shippingaddress.changed');
+    window.Snipcart.unsubscribe('page.validating');
 
   }
  render(){
