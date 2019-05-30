@@ -2,8 +2,8 @@
 const axios = require('axios');
 exports.handler = function(event,context,callback){
  
-    if(event.httpMethod == 'POST'){
-        console.log(event.body);
+    if(event.httpMethod == 'GET'){
+        const values = event.queryStringParameters;
 
         //
         const body = {
@@ -18,7 +18,7 @@ exports.handler = function(event,context,callback){
           };          
         callback(null, {
             statusCode:200,
-            body: JSON.stringify(body)
+            body: JSON.stringify(values)
         });
     }
 } 

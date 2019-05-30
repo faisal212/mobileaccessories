@@ -8,19 +8,18 @@ export default class NavButtons  extends React.Component{
     count: 0
   }
   componentDidMount(){
+    console.log('navbutttons');
     window.Snipcart.subscribe('page.validating', function(ev, data) {
-      if((ev.type == 'shipping-address' || ev.type == 'billing-address') && !data.phone.match(/^((\+92)|(0092))-{0,1}\d{3}-{0,1}\d{7}$|^\d{11}$|^\d{4}-\d{7}$/)) {
+      if((ev.type === 'shipping-address' || ev.type === 'billing-address') && !data.phone.match(/^((\+92)|(0092))-{0,1}\d{3}-{0,1}\d{7}$|^\d{11}$|^\d{4}-\d{7}$/)) {
           ev.addError('phone', 'Please enter a valid pakistani number');
       }
-      window.Snipcart.subscribe('authentication.success', function (email) {
-        console.log(email);
-     });
+     
      
   });
+     
   } 
   componentWillUnmount(){
     window.Snipcart.unsubscribe('page.validating');
-    window.Snipcart.unsubscribe('authentication.success');
 
   }
  render(){
