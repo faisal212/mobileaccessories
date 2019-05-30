@@ -22,7 +22,7 @@ exports.handler = async function (event, context, callback) {
                 console.log('call courier order added'); 
                 callback(null, {
                     statusCode: 200, 
-                    body: 'successfull add to courier' 
+                    body: 'successfull add to  call courier ' 
                 }); 
             } 
 
