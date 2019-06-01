@@ -1,11 +1,11 @@
 import React from "react"
 import styled from 'styled-components';
-import {  IoIosCart} from 'react-icons/io';
-import {colors} from '../../../utils/styles';
+import {  IoIosCart,IoIosArrowDown} from 'react-icons/io';
+import {colors,transDefault} from '../../../utils/styles';
 
 export default class NavButtons  extends React.Component{
   state = {
-    count: 0
+    dropdownClass: ''
   }
   componentDidMount(){
     console.log('navbutttons');
@@ -14,13 +14,31 @@ export default class NavButtons  extends React.Component{
           ev.addError('phone', 'Please enter a valid pakistani number');
       }
      
-     
+
   });
      
   } 
   componentWillUnmount(){
     window.Snipcart.unsubscribe('page.validating');
+  }
+  showDropdown = () => {
+    
+    if(this.state.dropdownClass === ''){
+      this.setState({
+        dropdownClass: 'show'
+      });
+    }else{
+      this.setState({
+        dropdownClass: ''
+      });
+    }
+  }
 
+  logout = () => {
+    window.Snipcart.api.user.logout();
+    this.setState({
+      logout:true
+    })
   }
  render(){
 
@@ -34,9 +52,21 @@ export default class NavButtons  extends React.Component{
           <IoIosCart className="cart icon snipcart-checkout" />
         
         
-          <a href="#" className="snipcart-user-profile">
-          {typeof user !== "undefined" ? user.email: 'Login & Signup'}
-</a>
+
+      {
+        typeof user !== "undefined" ?  (
+        <div className="my-account" >
+                       <span>{user.email}</span>
+
+           <IoIosArrowDown className=" icon " />
+           <ul className={`my-account-dropdown ${this.state.dropdownClass}`}>
+            <li><span className="snipcart-user-profile ripple">Orders</span></li>
+            <li><span className="ripple" onClick={this.logout}>Logout</span></li>
+           </ul>
+        </div>): (<a href="#" className="snipcart-user-profile">
+             Login & Signup
+        </a>)
+      }
    </NavButtonsWrapper>
   )
  }
@@ -65,14 +95,44 @@ const NavButtonsWrapper = styled.div`
     color: ${colors.mainOrange};
 
   }
-  .snipcart-user-profile{
-  color: inherit !important;
+  
+}
+
+
+.my-account{
+  position: relative;
+  cursor: pointer;
+  .icon{
+    position: absolute;
+    right: -20px;
+    font-size: 1.2rem;
+  }
+  margin: 0 0.625rem;
 
 }
+.my-account-dropdown{
+  
+  position: absolute;
+  
+    width: 120%;
+    box-shadow: 1px 1px 4px 1px grey;
+    text-align: center;
+    bottom: -70px;
+    background: #fff;
+    color: #444;
+    display: none;
+    ${transDefault};
+    li{
+      padding:5px 0;
+      border-bottom: 1px solid #e1e1e1;
+      span{
+        display:inline-block;
+        width:100%;
+      }
+    }
 }
-.snipcart-user-profile{
-  color: #fff;
-  margin: 0 0.625rem;
+.my-account:hover .my-account-dropdown{
+  display:block;
 }
 `;
 
