@@ -37,12 +37,9 @@ export const onRenderBody = ({ setPostBodyComponents }) => {
 		jquery: 'https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js',
 		styles: 'https://cdn.snipcart.com/themes/2.0/base/snipcart.min.css',
 	})
-	console.log('faisal');
-	console.log(options.apiKey);
 	if(!options.apiKey){
 		if (!warning) {
             warning = true
-            console.log(process.env);
 			console.log('No Snipcart API key found')
 		}
 		return

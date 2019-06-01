@@ -54,7 +54,6 @@ exports.createPages = async function ({ actions, graphql }) {
     const slug = edge.node.slug;
     const id = edge.node.id;
     const parent = edge.node.category;
-    console.log(parent);
     if( parent !== null){
       actions.createPage({
         path: `${parent.slug}/products/${slug}`,

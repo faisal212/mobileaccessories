@@ -8,7 +8,6 @@ export default class NavButtons  extends React.Component{
     dropdownClass: ''
   }
   componentDidMount(){
-    console.log('navbutttons');
     window.Snipcart.subscribe('page.validating', function(ev, data) {
       if((ev.type === 'shipping-address' || ev.type === 'billing-address') && !data.phone.match(/^((\+92)|(0092))-{0,1}\d{3}-{0,1}\d{7}$|^\d{11}$|^\d{4}-\d{7}$/)) {
           ev.addError('phone', 'Please enter a valid pakistani number');
@@ -63,9 +62,9 @@ export default class NavButtons  extends React.Component{
             <li><span className="snipcart-user-profile ripple">Orders</span></li>
             <li><span className="ripple" onClick={this.logout}>Logout</span></li>
            </ul>
-        </div>): (<a href="#" className="snipcart-user-profile">
+        </div>): (<span  className="snipcart-user-profile">
              Login & Signup
-        </a>)
+        </span>)
       }
    </NavButtonsWrapper>
   )
@@ -98,7 +97,10 @@ const NavButtonsWrapper = styled.div`
   
 }
 
+.snipcart-user-profile{
+  cursor: pointer;
 
+}
 .my-account{
   position: relative;
   cursor: pointer;

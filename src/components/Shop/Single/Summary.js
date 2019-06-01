@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
-import { colors, robotoFont } from '../../utils/styles';
-import BuyButton from '../Globals/Buttons/BuyButton';
+import { colors, robotoFont } from '../../../utils/styles';
+import BuyButton from '../../Globals/Buttons/BuyButton';
 export default function Summary({ product }) {
     const description = product.description.description.split('\n');
     return (
@@ -21,7 +21,7 @@ export default function Summary({ product }) {
 const SummaryWrapper = styled.div`
 background: #F6F6F6;
 padding: 15px 15px;
-
+ 
 @media(min-width:768px){
     padding: 3rem;
     min-height: 100%;

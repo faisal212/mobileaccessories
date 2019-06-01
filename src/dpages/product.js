@@ -5,7 +5,8 @@ import SEO from "../components/seo"
 import Layout from "../components/layout"
 import { Container, Row, Col } from 'react-grid-system';
 import FeatureImage from '../components/Shop/Single/FeatureImage';
-import Summary from '../components/Shop/Summary';
+import Summary from '../components/Shop/Single/Summary';
+import ExtraImages from '../components/Shop/Single/ExtraImages';
 export default class product extends React.Component {
 
   state = {
@@ -21,6 +22,7 @@ export default class product extends React.Component {
   render() {
     
     const {node} = this.props.data.allContentfulProducts.edges[0];
+    
     return (
       <Layout isHome={false} className="background-white">
         <SEO title={`${node.title} Mobile cases`} keywords={[`Product`, `cases`, `mobile accessories`, 'mobileaccessories', `${node.title}`]} />
@@ -36,6 +38,7 @@ export default class product extends React.Component {
               </Col>
             </Row>
           </Container>
+          {node.images !== null ? ( <ExtraImages images={node.images}/>) : ''}
         </div>
       </Layout>
     )
@@ -59,8 +62,16 @@ export const query = graphql`
           fluid(maxWidth: 1024) {
             ...GatsbyContentfulFluid_withWebp
           }
-          fixed(width: 150,height:150){
-            ...GatsbyContentfulFixed_withWebp
+          fixed(width:150,height:150){
+            ...GatsbyContentfulFixed
+          }
+         
+        }
+        images{
+          id
+          fluid(maxWidth:1920){
+            ...GatsbyContentfulFluid_withWebp
+            
           }
         }
         category{
