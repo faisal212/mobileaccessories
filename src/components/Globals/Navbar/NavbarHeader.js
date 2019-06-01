@@ -28,7 +28,7 @@ export default function NavbarHeader({ handleNavbar, isHome} ) {
 
                     )
                 }
-                <Link   bg="#663399" to='/'>
+                <Link   bg="#663399" to='/' className="logo">
                     <img src={logo} alt="company name" />
                 </Link>
 
@@ -53,4 +53,5 @@ align-items: center;
 .back-icon{
     font-size: 3rem;
 }
-`;
+
+`; 
