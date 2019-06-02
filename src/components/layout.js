@@ -9,7 +9,6 @@ import React  from "react"
 import PropTypes from "prop-types"
 import { createGlobalStyle } from 'styled-components';
 import {colors,headingFont} from '../utils/styles';
-import Navbar from './Globals/Navbar';
 import Footer from './Globals/Footer';
 import { ScreenClassProvider} from 'react-grid-system';
 
@@ -17,7 +16,6 @@ const Layout = ({ children ,isHome}) => {
   return(
   <React.Fragment>
     <GlobalStyle/>
-    <Navbar isHome={isHome}/>
     
     <ScreenClassProvider>
         {children}  
