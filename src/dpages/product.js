@@ -31,7 +31,7 @@ export default class product extends React.Component {
           <Container>
             <Row>
               <Col sm={6} >
-                <FeatureImage image={node.featureImage} />
+                {node.featureImage !== null ? (<FeatureImage image={node.featureImage} />): ''}
               </Col>
               <Col sm={6}>
                 <Summary product={node}/>
