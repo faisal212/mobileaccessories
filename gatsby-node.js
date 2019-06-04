@@ -22,6 +22,19 @@ exports.createPages = async function ({ actions, graphql }) {
           }
         }
         
+        mobiles:   allContentfulMobile{
+          edges{
+            node{
+              id
+              title
+              slug
+              category{
+                slug
+              }
+            }
+          }
+        }
+
         products:   allContentfulProducts{
           edges{
             node{
@@ -50,6 +63,18 @@ exports.createPages = async function ({ actions, graphql }) {
   });
 
 
+  data.mobiles.edges.forEach(edge => {
+    const slug = edge.node.slug;
+    const id = edge.node.id;
+    const parent = edge.node.category;
+    if( parent !== null){
+      actions.createPage({
+        path: `${parent.slug}/mobiles/${slug}`,
+        component: require.resolve(`./src/dpages/mobiles.js`),
+        context: { slug: slug, id: id },
+      })
+    }
+  });
   data.products.edges.forEach(edge => {
     const slug = edge.node.slug;
     const id = edge.node.id;

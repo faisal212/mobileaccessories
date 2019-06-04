@@ -5,7 +5,7 @@ import SEO from "../components/seo"
 import Layout from "../components/layout"
 import ListHeading from '../components/Shop/ListHeading';
 import { Container, Row, Col } from 'react-grid-system';
-import MobileView from '../components/Shop/MobilesView';
+import ProductView from '../components/Shop/ProductView';
 import MainTransition from '../components/Globals/MainTransition';
 
 export default class category extends React.Component {
@@ -27,7 +27,7 @@ export default class category extends React.Component {
 
 
   render() {
-    const data = this.props.data.allContentfulCategory.edges[0];
+    const data = this.props.data.allContentfulMobile.edges[0];
     return (
     <MainTransition>
         <Layout isHome={false}>
@@ -36,9 +36,9 @@ export default class category extends React.Component {
         <ListHeading title={data.node.title} />
         <Container style={{padding: '50px 0'}} className="category">
           <Row>
-              {data.node.mobile.map((item) => (
-               <Col xs={6} sm={3} key={item.id} >
-                   <MobileView item={item}/>
+              {data.node.products.map((product) => (
+               <Col xs={6} sm={3} key={product.id} >
+                   <ProductView  item={product}/>
                </Col>
               ))}
            
@@ -53,20 +53,22 @@ export default class category extends React.Component {
 
 export const query = graphql`
   query( $id: String!){
-   allContentfulCategory(filter : {id: {eq: $id}}) {
+   allContentfulMobile(filter : {id: {eq: $id}}) {
     edges {
       node {
         id
         title      
-        mobile {
+        products {
           id
           title
+          price
           slug
           featureImage{ 
             fluid(maxWidth:450){
               ...GatsbyContentfulFluid_withWebp
             }
           }
+          colors
           category{
               slug
           }

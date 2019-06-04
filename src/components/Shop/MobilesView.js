@@ -2,28 +2,19 @@ import React from 'react'
 import styled from 'styled-components';
 import {Link} from "gatsby";
 import Img from "gatsby-image";
+
 import {colors,robotoFont} from '../../utils/styles';
 
 
-export default function ProductView({item}) {
+export default function MobileView({item}) {
   return (
     <ProductViewWrapper>
-    <Link  to={`/${item.category.slug}/products/${item.slug}`} className="link ripple">
+    <Link  to={`/${item.category.slug}/mobiles/${item.slug}`} className="link ripple">
     <Img fluid={item.featureImage.fluid} className="product-img"/>
+
       <div className="inner-product-header">
         <h2>{item.title}</h2>
-        <span className="price">Rs {item.price.toLocaleString()}</span>
-        {
-          (item.colors !== null) && (
-            <ul className="colors">
-              {
-                item.colors.map((color) => (
-                  <li key={item.id + color} style={{background: color}}></li>
-                ))
-              }
-            </ul>
-          )
-        }
+        
       </div>
     </Link>
   </ProductViewWrapper>
