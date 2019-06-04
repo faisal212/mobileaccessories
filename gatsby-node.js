@@ -78,14 +78,12 @@ exports.createPages = async function ({ actions, graphql }) {
   data.products.edges.forEach(edge => {
     const slug = edge.node.slug;
     const id = edge.node.id;
-    const parent = edge.node.category;
-    if( parent !== null){
       actions.createPage({
-        path: `${parent.slug}/products/${slug}`,
+        path: `products/${slug}`,
         component: require.resolve(`./src/dpages/product.js`),
         context: { slug: slug, id: id },
       })
-    }
+    
   });
 
 }
