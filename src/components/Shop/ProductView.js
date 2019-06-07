@@ -9,8 +9,7 @@ export default function ProductView({item}) {
   return (
     <ProductViewWrapper>
     <Link  to={`/${item.category.slug}/products/${item.slug}`} className="link ripple">
-      {item.featureImage !== null ? (    <Img fluid={item.featureImage.fluid} className="product-img"/>
-) : ''}
+    <Img fluid={item.featureImage.fluid} className="product-img"/>
       <div className="inner-product-header">
         <h2>{item.title}</h2>
         <span className="price">Rs {item.price.toLocaleString()}</span>
