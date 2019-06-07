@@ -5,10 +5,10 @@ import Img from "gatsby-image";
 import {colors,robotoFont} from '../../utils/styles';
 
 
-export default function ProductView({item}) {
+export default function ProductView({parentslug,item}) {
   return (
     <ProductViewWrapper>
-    <Link  to={`/${item.category.slug}/products/${item.slug}`} className="link ripple">
+    <Link  to={`/${parentslug}/products/${item.slug}`} className="link ripple">
     <Img fluid={item.featureImage.fluid} className="product-img"/>
       <div className="inner-product-header">
         <h2>{item.title}</h2>

@@ -31,6 +31,11 @@ exports.createPages = async function ({ actions, graphql }) {
               category{
                 slug
               }
+              products{
+                id
+                title
+                slug
+              }
             }
           }
         }
@@ -67,23 +72,23 @@ exports.createPages = async function ({ actions, graphql }) {
     const slug = edge.node.slug;
     const id = edge.node.id;
     const parent = edge.node.category;
+    const products = edge.node.products ;
     if( parent !== null){
       actions.createPage({
         path: `${parent.slug}/mobiles/${slug}`,
         component: require.resolve(`./src/dpages/mobiles.js`),
         context: { slug: slug, id: id },
-      })
+      });
+
+      products.forEach(product => {
+        actions.createPage({
+          path: `${parent.slug}/mobiles/${slug}/products/${product.slug}`,
+          component: require.resolve(`./src/dpages/product.js`),
+          context: { slug: product.slug, id: product.id },
+        });
+      });
     }
   });
-  data.products.edges.forEach(edge => {
-    const slug = edge.node.slug;
-    const id = edge.node.id;
-      actions.createPage({
-        path: `products/${slug}`,
-        component: require.resolve(`./src/dpages/product.js`),
-        context: { slug: slug, id: id },
-      })
-    
-  });
+
 
 }
