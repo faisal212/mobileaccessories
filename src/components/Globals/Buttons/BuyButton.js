@@ -8,7 +8,7 @@ export default function BuyButton({product}) {
                 data-item-id={product.id}
                 data-item-name={product.title}
                 data-item-price={product.price}
-                data-item-url={`https://www.stayclassy.pk/products/${product.slug}`}
+                data-item-url={`https://www.bulkpanda.pk/products/${product.slug}`}
                 data-item-image={product.featureImage.fixed.src}
                 >
                 Buy Now
