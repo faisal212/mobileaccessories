@@ -14,11 +14,21 @@ export default class NavButtons  extends React.Component{
       }
      
 
-  });
-     
+    });
+    window.Snipcart.subscribe('authentication.success', function(email) {
+      const userCreationDate = window.Snipcart.api.user.current().creationDate;
+      const milliseconds = parseInt("1000");
+      const hours = Math.floor(milliseconds / 3600000);
+      const differenceTime = Date.now() - new Date(userCreationDate);
+      const minutes = Math.floor((differenceTime - (hours * 3600000)) / 60000);;
+
+      console.log(minutes);
+
+    });  
   } 
   componentWillUnmount(){
     window.Snipcart.unsubscribe('page.validating');
+    window.Snipcart.unsubscribe('authentication.success');
   }
   showDropdown = () => {
     
