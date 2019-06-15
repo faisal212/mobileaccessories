@@ -1,7 +1,14 @@
 const request = require('request');
 const shortid = require('shortid');
 const sgMail = require('@sendgrid/mail');
-
+const headers = {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Methods': '*',
+    'Access-Control-Max-Age': '2592000',
+    'Access-Control-Allow-Credentials': 'true',
+  };
 exports.handler = function (event, context, callback) {
 
 
@@ -38,7 +45,7 @@ exports.handler = function (event, context, callback) {
                     callback(null, {
                         statusCode: 400,
                         body: error
-                    });
+                    },headers );
                 }else{
                 
                     console.log(body);
@@ -47,7 +54,7 @@ exports.handler = function (event, context, callback) {
                         callback(null, {
                             statusCode: 400,
                             body: response
-                        });
+                        },headers );
                     }else{
                     
                         const msg = {
@@ -64,8 +71,8 @@ exports.handler = function (event, context, callback) {
                             callback(null, {
                                 statusCode: 500,
                                 body: error.message
-                            });
-                        } );
+                            },headers );
+                        },headers );
                        
                     }
                     
@@ -79,7 +86,7 @@ exports.handler = function (event, context, callback) {
             callback(null, {
                 statusCode: 500,
                 body: error.message
-            });
+            },headers );
         }
     }
 
