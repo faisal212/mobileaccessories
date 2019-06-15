@@ -25,7 +25,7 @@ export default class NavButtons extends React.Component {
       if (minutes < 5) {
      
       }
-      axios.post("https://app.netlify.com/sites/mobileaccessories/functions/addDiscount", {
+      axios.post("/.netlify/functions/addDiscount", {
         email: email
       }).catch(e => console.log(e));
 
