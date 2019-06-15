@@ -1,42 +1,47 @@
 import React from "react"
 import styled from 'styled-components';
-import {  IoIosCart,IoIosArrowDown} from 'react-icons/io';
-import {colors,transDefault} from '../../../utils/styles';
-
-export default class NavButtons  extends React.Component{
+import { IoIosCart, IoIosArrowDown } from 'react-icons/io';
+import { colors, transDefault } from '../../../utils/styles';
+import axios from 'axios';
+export default class NavButtons extends React.Component {
   state = {
     dropdownClass: ''
   }
-  componentDidMount(){
-    window.Snipcart.subscribe('page.validating', function(ev, data) {
-      if((ev.type === 'shipping-address' || ev.type === 'billing-address') && !data.phone.match(/^((\+92)|(0092))-{0,1}\d{3}-{0,1}\d{7}$|^\d{11}$|^\d{4}-\d{7}$/)) {
-          ev.addError('phone', 'Please enter a valid pakistani number');
+  componentDidMount() {
+    window.Snipcart.subscribe('page.validating', function (ev, data) {
+      if ((ev.type === 'shipping-address' || ev.type === 'billing-address') && !data.phone.match(/^((\+92)|(0092))-{0,1}\d{3}-{0,1}\d{7}$|^\d{11}$|^\d{4}-\d{7}$/)) {
+        ev.addError('phone', 'Please enter a valid pakistani number');
       }
-     
+
 
     });
-    window.Snipcart.subscribe('authentication.success', function(email) {
+    window.Snipcart.subscribe('authentication.success', function (email) {
       const userCreationDate = window.Snipcart.api.user.current().creationDate;
       const milliseconds = parseInt("1000");
       const hours = Math.floor(milliseconds / 3600000);
       const differenceTime = Date.now() - new Date(userCreationDate);
       const minutes = Math.floor((differenceTime - (hours * 3600000)) / 60000);;
 
-      console.log(minutes);
+      if (minutes < 5) {
+     
+      }
+      axios.post("https://app.netlify.com/sites/mobileaccessories/functions/addDiscount", {
+        email: email
+      }).catch(e => console.log(e));
 
-    });  
-  } 
-  componentWillUnmount(){
+    });
+  }
+  componentWillUnmount() {
     window.Snipcart.unsubscribe('page.validating');
     window.Snipcart.unsubscribe('authentication.success');
   }
   showDropdown = () => {
-    
-    if(this.state.dropdownClass === ''){
+
+    if (this.state.dropdownClass === '') {
       this.setState({
         dropdownClass: 'show'
       });
-    }else{
+    } else {
       this.setState({
         dropdownClass: ''
       });
@@ -46,39 +51,39 @@ export default class NavButtons  extends React.Component{
   logout = () => {
     window.Snipcart.api.user.logout();
     this.setState({
-      logout:true
+      logout: true
     })
   }
- render(){
+  render() {
 
-  let  user = undefined;
-  if(typeof window !== 'undefined'){
-    if(typeof window.Snipcart.api !== 'undefined')
-    user = window.Snipcart.api.user.current();
-  }
-  return (
-   <NavButtonsWrapper>
-          <IoIosCart className="cart icon snipcart-checkout" />
-        
-        
+    let user = undefined;
+    if (typeof window !== 'undefined') {
+      if (typeof window.Snipcart.api !== 'undefined')
+        user = window.Snipcart.api.user.current();
+    }
+    return (
+      <NavButtonsWrapper>
+        <IoIosCart className="cart icon snipcart-checkout" />
 
-      {
-        typeof user !== "undefined" ?  (
-        <div className="my-account" >
-                       <span>{user.email}</span>
 
-           <IoIosArrowDown className=" icon " />
-           <ul className={`my-account-dropdown ${this.state.dropdownClass}`}>
-            <li><span className="snipcart-user-profile ripple">Orders</span></li>
-            <li><span className="ripple" onClick={this.logout}>Logout</span></li>
-           </ul>
-        </div>): (<span  className="snipcart-user-profile">
-             Login & Signup
+
+        {
+          typeof user !== "undefined" ? (
+            <div className="my-account" >
+              <span>{user.email}</span>
+
+              <IoIosArrowDown className=" icon " />
+              <ul className={`my-account-dropdown ${this.state.dropdownClass}`}>
+                <li><span className="snipcart-user-profile ripple">Orders</span></li>
+                <li><span className="ripple" onClick={this.logout}>Logout</span></li>
+              </ul>
+            </div>) : (<span className="snipcart-user-profile">
+              Login & Signup
         </span>)
-      }
-   </NavButtonsWrapper>
-  )
- }
+        }
+      </NavButtonsWrapper>
+    )
+  }
 }
 
 
