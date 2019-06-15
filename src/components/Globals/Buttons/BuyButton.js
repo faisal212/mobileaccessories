@@ -3,22 +3,23 @@ import styled from 'styled-components';
 import { colors } from '../../../utils/styles';
 export default function BuyButton({ product }) {
 
-  if (typeof window !== undefined) {
-    return (
-      <BuyButtonWrapper
-        className="snipcart-add-item"
-        data-item-id={product.id}
-        data-item-name={product.title}
-        data-item-price={product.price}
-        data-item-url={`https://www.bulkpanda.pk${window.location.pathname}`}
-        data-item-image={product.featureImage.fixed.src}
-      >
-        Buy Now
-      </BuyButtonWrapper>
-    )
-  } else {
-    return (<div></div>)
+  let pathname = '';
+
+  if(typeof window !== 'undefined'){
+    pathname = window.location.pathname;
   }
+  return (
+    <BuyButtonWrapper
+      className="snipcart-add-item"
+      data-item-id={product.id}
+      data-item-name={product.title}
+      data-item-price={product.price}
+      data-item-url={`https://www.bulkpanda.pk${pathname}`}
+      data-item-image={product.featureImage.fixed.src}
+    >
+      Buy Now
+    </BuyButtonWrapper>
+  )
 }
 
 const BuyButtonWrapper = styled.button`
