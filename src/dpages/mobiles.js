@@ -36,11 +36,16 @@ export default class category extends React.Component {
         <ListHeading title={data.node.title} />
         <Container style={{padding: '50px 0'}} className="category">
           <Row>
-              {data.node.products.map((product) => (
-               <Col xs={6} sm={3} key={product.id} >
-                   <ProductView parentslug={`${data.node.category.slug}/mobiles/${data.node.slug}`} item={product}/>
-               </Col>
-              ))}
+              {
+                data.node.products !== null ? 
+                data.node.products.map((product) => (
+                  <Col xs={6} sm={3} key={product.id} >
+                      <ProductView parentslug={`${data.node.category.slug}/mobiles/${data.node.slug}`} item={product}/>
+                  </Col>
+                 ))
+                : ('')
+              
+            }
            
           </Row>
         </Container>
