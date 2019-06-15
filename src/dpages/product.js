@@ -10,10 +10,15 @@ import ExtraImages from '../components/Shop/Single/ExtraImages';
 export default class product extends React.Component {
 
   state = {
-    path: ''
+    data: {
+      node: {
+        title: '',
+      }
+
+    }
   };
 
-  
+
   render() {
     
     const {node} = this.props.data.allContentfulProducts.edges[0];

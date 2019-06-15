@@ -47,9 +47,7 @@ export const query = graphql`
             title
             price
             slug
-            category{
-              slug
-            }
+           
           }
         
         }
