@@ -36,11 +36,18 @@ export default class category extends React.Component {
         <ListHeading title={data.node.title} />
         <Container style={{padding: '50px 0'}} className="category">
           <Row>
-              {data.node.mobile.map((item) => (
-               <Col xs={6} sm={3} key={item.id} >
-                   <MobileView item={item}/>
-               </Col>
-              ))}
+          {} 
+
+            {
+              data.node.mobile !== null ?
+              data.node.mobile.map((item) => (
+                <Col xs={6} sm={3} key={item.id} >
+                    <MobileView item={item}/>
+                </Col>
+               )) : ('')
+            }    
+           
+
            
           </Row>
         </Container>
