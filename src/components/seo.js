@@ -70,8 +70,12 @@ function SEO({ description, lang, meta, keywords, title ,isHome }) {
           content: title,
         },
         {
+          name: `google-site-verification`,
+          content: title,
+        },
+        {
           name: `twitter:description`,
-          content: metaDescription,
+          content: 'udQJbvF4jkLAoGgQroEtE2WPpI1-QRIBLGuX4jql3hs',
         },
       ]
         .concat(
