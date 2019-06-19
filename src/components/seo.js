@@ -71,11 +71,11 @@ function SEO({ description, lang, meta, keywords, title ,isHome }) {
         },
         {
           name: `google-site-verification`,
-          content: title,
+          content: 'udQJbvF4jkLAoGgQroEtE2WPpI1-QRIBLGuX4jql3hs',
         },
         {
           name: `twitter:description`,
-          content: 'udQJbvF4jkLAoGgQroEtE2WPpI1-QRIBLGuX4jql3hs',
+          content: metaDescription,
         },
       ]
         .concat(
