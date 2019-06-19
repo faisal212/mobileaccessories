@@ -7,6 +7,7 @@ import { Container, Row, Col } from 'react-grid-system';
 import FeatureImage from '../components/Shop/Single/FeatureImage';
 import Summary from '../components/Shop/Single/Summary';
 import ExtraImages from '../components/Shop/Single/ExtraImages';
+import ProductReviews from '../components/Shop/Single/ProductReviews';
 export default class product extends React.Component {
 
   state = {
@@ -17,12 +18,13 @@ export default class product extends React.Component {
 
     }
   };
+ 
 
-
+ 
   render() {
-    
-    const {node} = this.props.data.allContentfulProducts.edges[0];
-    
+
+    const { node } = this.props.data.allContentfulProducts.edges[0];
+
     return (
       <Layout isHome={false} className="background-white">
         <SEO title={`${node.title} Mobile cases`} keywords={[`Product`, `cases`, `mobile accessories`, 'mobileaccessories', `${node.title}`]} />
@@ -31,14 +33,15 @@ export default class product extends React.Component {
           <Container>
             <Row>
               <Col sm={6} >
-                {node.featureImage !== null ? (<FeatureImage image={node.featureImage} />): ''}
+                {node.featureImage !== null ? (<FeatureImage image={node.featureImage} />) : ''}
               </Col>
               <Col sm={6}>
-                <Summary product={node}/>
+                <Summary product={node} />
               </Col>
             </Row>
           </Container>
-          {node.images !== null ? ( <ExtraImages images={node.images}/>) : ''}
+          <ProductReviews product={node}/>
+          {node.images !== null ? (<ExtraImages images={node.images} />) : ''}
         </div>
       </Layout>
     )

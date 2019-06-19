@@ -20,6 +20,18 @@ export const onServiceWorkerUpdateReady = () => {
     }
 }
 
+export const onInitialClientRender = () => {
+  console.log("ReactDOM.render has executed");
+  (function e (){
+    var e = window.document.createElement("script");
+    e.type = "text/javascript";
+    e.async = true;
+      e.src = "//staticw2.yotpo.com/T9ePqWQCe8w68TlRhQ8YAscz1u4nvNhOaCC9RHNr/widget.js";
+    var t = window.document.getElementsByTagName("script")[0];
+    t.parentNode.insertBefore(e, t);
+  })();
+}
+
 // export const wrapRootElement = ({element}) => (
 //   <FirebaseContext.Provider value={new Firebase()}>
 //     <AuthContextProvider >{element}</AuthContextProvider>
