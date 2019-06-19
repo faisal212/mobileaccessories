@@ -18,7 +18,22 @@ export default class product extends React.Component {
 
     }
   };
- 
+  componentDidMount() {
+    if(window.localStorage.getItem('add-yopt').includes('yes')){
+      let e = window.document.createElement("script");
+
+      e.type = "text/javascript";
+      e.async = true;
+        e.src = "//staticw2.yotpo.com/T9ePqWQCe8w68TlRhQ8YAscz1u4nvNhOaCC9RHNr/widget.js";
+      let t = window.document.getElementsByTagName("script")[0];
+      t.parentNode.insertBefore(e, t);
+
+      window.localStorage.setItem('add-yopt','no')
+    }else{
+     console.log( document.getElementsByTagName('script[src="//staticw2.yotpo.com/T9ePqWQCe8w68TlRhQ8YAscz1u4nvNhOaCC9RHNr/widget.js"]') )
+    }
+
+  }
 
  
   render() {
