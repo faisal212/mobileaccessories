@@ -30,7 +30,7 @@ export default class product extends React.Component {
 
       window.localStorage.setItem('add-yopt','no')
     }else{
-     console.log( document.getElementsByTagName('script[src="//staticw2.yotpo.com/T9ePqWQCe8w68TlRhQ8YAscz1u4nvNhOaCC9RHNr/widget.js"]') )
+      window.yotpo.initWidgets();
     }
 
   }

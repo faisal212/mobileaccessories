@@ -7,14 +7,14 @@ export default function ProductReviews({product}) {
     pathname = window.location.pathname;
   }
     return (
-        <div class="yotpo yotpo-main-widget"
+        <div className="yotpo yotpo-main-widget"
             data-product-id={product.id}
             data-price={product.price}
             data-currency="PkR"
             data-name={product.title}
             data-url={`https://www.bulkpanda.pk${pathname}`}
             data-image-url={product.featureImage.fixed.src}
-            data-description={product.title}>
+            data-description={product.description.description.toString()}>
         </div>
     )
 }
