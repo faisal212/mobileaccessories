@@ -7,10 +7,6 @@ module.exports = {
     description: `This ecommerce store is use to sell mobile accessories.`,
     author: `@faisal`,
   },
-  proxy: {
-    prefix: '/localhost:9000',
-    url: 'https:/',
-  },
   plugins: [
     'gatsby-plugin-netlify',
     {
