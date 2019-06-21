@@ -12,9 +12,8 @@ exports.handler = function (event, context, callback) {
     const rating = body.rating;
     const title = body.title;
     const description = body.description;
-    const name = body.fullName;
-    console.log(name);
-    request({
+    const name = body.user_name;
+    request({ 
         url: `https://app.snipcart.com/api/products/${body.product_id}`,
         auth: {
             'user': process.env.SNIPCART_SECRET
@@ -56,6 +55,7 @@ exports.handler = function (event, context, callback) {
                         body: `${email} added a review to product ${body.userDefinedId}`
                     });
                 }).catch(error => {
+                    console.log(error);
                     callback(null, {
                         statusCode: 500,
                         body: error.message   
