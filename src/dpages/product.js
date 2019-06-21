@@ -24,7 +24,7 @@ export default class product extends React.Component {
 
       e.type = "text/javascript";
       e.async = true;
-        e.src = `//staticw2.yotpo.com/${process.env.YOPTO_API_KEY}/widget.js`;
+        e.src = `//staticw2.yotpo.com/${process.env.GATSBY_YOPTO_API_KEY}/widget.js`;
       let t = window.document.getElementsByTagName("script")[0];
       t.parentNode.insertBefore(e, t);
 
