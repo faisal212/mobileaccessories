@@ -2,6 +2,67 @@ const axios = require('axios');
 const url = require('url');
 const sgMail = require('@sendgrid/mail');
 
+const imgUrl = "https://businessoverbroadway.com/wp-content/uploads/2011/10/MobileApp_Reviews.png";
+const template = (body) => {
+    return (
+        `
+     <form method="post" action="http://localhost:9000/addreview" target="_blank"> 
+    <p>Rating:</p>
+    <div class="rating">
+        <input  type="radio" id="star5" title="Awesome - 5 stars" style="margin-right:15px" name="rating" value="5">
+        <label class"full" for="star5" style="margin-right:15px">
+        <img src="${imgUrl}" width="15" height="15"  />
+        <img src="${imgUrl}" width="15" height="15"  />
+        <img src="${imgUrl}" width="15" height="15"  />
+        <img src="${imgUrl}" width="15" height="15"  />
+        <img src="${imgUrl}" width="15" height="15"  />
+        </label>
+        <input type="radio" id="star4" name="rating" value="4">
+        <label class="full" for="star4" title="Pretty good - 4 stars" style="margin-right:15px">
+        <img src="${imgUrl}" width="15" height="15"  />
+        <img src="${imgUrl}" width="15" height="15"  />
+        <img src="${imgUrl}" width="15" height="15"  />
+        <img src="${imgUrl}" width="15" height="15"  />
+    
+        </label>
+        <input type="radio" id="star3" name="rating" value="3">
+        <label class="full" for="star3" title="Meh - 3 stars" style="margin-right:15px">
+        <img src="${imgUrl}" width="15" height="15"  />
+        <img src="${imgUrl}" width="15" height="15"  />
+        <img src="${imgUrl}" width="15" height="15"  />
+    
+        </label>
+        <input type="radio" id="star2" name="rating" value="2">
+        <label class="full" for="star2" title="Kinda bad - 2 stars" style="margin-right:15px">
+        <img src="${imgUrl}" width="15" height="15"  />
+        <img src="${imgUrl}" width="15" height="15"  />
+        </label>
+        <input  type="radio" id="star1" name="rating" value="1">
+        <label class="full" for="star1" title="Sucks big time - 1 star" style="margin-right:15px">
+        <img src="${imgUrl}" width="15" height="15"  />
+    
+        </label>
+        <div class=""></div>
+    </div>
+    <p>Title</p>
+    <input type="title" name="title">
+    <p>Description:</p>
+    <textarea cols="50" name="description"></textarea>
+    <input name="product_id" value="${body.items[0].id}" style="display:none" />
+    <input name="user_email" value="${body.user.email}" style="display:none" />
+    <input name="user_id" value="${body.user.id}" style="display:none" />
+    <div>
+    <input type="submit" value="Submit">
+
+    </div>
+    </form>
+    
+                        `
+    );
+}
+
+
+ 
 exports.handler = async function (event, context, callback) {
     
     if (event.httpMethod == 'POST') {
@@ -31,13 +92,14 @@ exports.handler = async function (event, context, callback) {
                 const msg = {
                     to: body.user.email,
                     from: 'kwdevelopers15@example.com',
-                    subject: '100 rupees discount',
-                    text: `welcome`,
-                    html: `review our product <a href="http://google.com" target="_blank">Google</a>`,
+                    subject: 'Add Review',
+                    text: `Add Review`,
+                    html: template(body)
                 };
-                  const response  = await sgMail.send(msg);
+                console.log(msg);
+                   await sgMail.send(msg);
                   callback(null, {
-                    statusCode: 200,
+                    statusCode: 201,
                     body: 'review Mail send'
                  });
             }

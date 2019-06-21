@@ -26,7 +26,7 @@ exports.handler = function (event, context, callback) {
             request({
                 url: "http://app.snipcart.com/api/discounts",
                 auth: {
-                    'user': 'ST_MzdlOTM4ODgtYmVkMy00NjUwLWE2NjItZWUzNDU0YmI4ZGRlNjM2OTYxNjI3NjY3NDM5MDcy'
+                    'user': process.env.SNIPCART_SECRET
                 },
                 method: "POST",
                 json: true,
