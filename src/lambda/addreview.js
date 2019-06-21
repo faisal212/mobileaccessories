@@ -12,6 +12,7 @@ exports.handler = function (event, context, callback) {
     const rating = body.rating;
     const title = body.title;
     const description = body.description;
+    const name = body.fullName;
     request({
         url: `https://app.snipcart.com/api/products/${body.product_id}`,
         auth: {
@@ -44,7 +45,7 @@ exports.handler = function (event, context, callback) {
                     "product_title": body.name,
                     "product_url": body.url,
                     "product_image_url": body.image,
-                    "display_name": body.name,
+                    "display_name": name,
                     "email": email,
                     "review_content": description,
                     "review_title": title,

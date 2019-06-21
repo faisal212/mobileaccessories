@@ -51,6 +51,7 @@ const template = (body) => {
     <input name="product_id" value="${body.items[0].id}" style="display:none" />
     <input name="user_email" value="${body.user.email}" style="display:none" />
     <input name="user_id" value="${body.user.id}" style="display:none" />
+    <input name="user_name" value="${body.user.fullName}" style="display:none" />
     <div>
     <input type="submit" value="Submit">
 
