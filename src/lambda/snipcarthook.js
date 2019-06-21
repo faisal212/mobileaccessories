@@ -92,6 +92,7 @@ exports.handler = async function (event, context, callback) {
                 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
                 const msg = {
                     to: body.user.email,
+                    fromname: 'Bulk Panda',
                     from: 'kwdevelopers15@example.com',
                     subject: 'Add Review',
                     text: `Add Review`,

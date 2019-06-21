@@ -52,7 +52,7 @@ exports.handler = function (event, context, callback) {
                 }).then(data => {
                     callback(null, {
                         statusCode: 200,
-                        body: `${email} added a review to product ${body.userDefinedId}`
+                        body: `${email} added a review to product ${body.title}`
                     });
                 }).catch(error => {
                     console.log(error);
