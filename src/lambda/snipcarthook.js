@@ -6,7 +6,7 @@ const imgUrl = "https://businessoverbroadway.com/wp-content/uploads/2011/10/Mobi
 const template = (body) => {
     return (
         `
-     <form method="post" action="http://localhost:9000/addreview" target="_blank"> 
+     <form method="post" action="https://www.bulkpanda.pk/.netlify/functions/addreview" target="_blank"> 
     <p>Rating:</p>
     <div class="rating">
         <input  type="radio" id="star5" title="Awesome - 5 stars" style="margin-right:15px" name="rating" value="5">
