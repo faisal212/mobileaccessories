@@ -13,6 +13,7 @@ exports.handler = function (event, context, callback) {
     const title = body.title;
     const description = body.description;
     const name = body.fullName;
+    console.log(name);
     request({
         url: `https://app.snipcart.com/api/products/${body.product_id}`,
         auth: {
@@ -38,7 +39,6 @@ exports.handler = function (event, context, callback) {
                     body: response
                 });
             } else {
-                console.log(body);
                 axios.post('https://api.yotpo.com/v1/widget/reviews', {
                     "appkey": process.env.YOPTO_API_KEY,
                     "sku": body.userDefinedId,
@@ -68,6 +68,8 @@ exports.handler = function (event, context, callback) {
         }
     });
     } catch (error) {
+        console.log(error);
+
         callback(null, {
             statusCode: 500,
             body: error.message   
