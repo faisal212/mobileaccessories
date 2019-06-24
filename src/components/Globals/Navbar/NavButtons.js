@@ -22,7 +22,7 @@ export default class NavButtons extends React.Component {
       const differenceTime = Date.now() - new Date(userCreationDate);
       const minutes = Math.floor((differenceTime - (hours * 3600000)) / 60000);;
 
-      if (minutes < 5) {
+      if (true) {
         axios.post("/.netlify/functions/addDiscount", {
           email: email
         }).then(data => console.log('we have send an email of discount')).catch(e => console.log(e));
