@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { IoIosCart, IoIosArrowDown } from 'react-icons/io';
 import { colors, transDefault } from '../../../utils/styles';
 import axios from 'axios';
+import {getCookie} from '../../../utils/utils';
 export default class NavButtons extends React.Component {
   state = {
     dropdownClass: ''
@@ -24,7 +25,8 @@ export default class NavButtons extends React.Component {
 
       if (true) {
         axios.post("/.netlify/functions/addDiscount", {
-          email: email
+          email: email,
+          session : getCookie('snipcart_auth_cookie')
         }).then(data => console.log('we have send an email of discount')).catch(e => console.log(e));
       }
       
