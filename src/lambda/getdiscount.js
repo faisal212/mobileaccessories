@@ -12,11 +12,11 @@ exports.handler = async function (event, context) {
                 if (user.status !== 200) {
                     return {
                         statusCode: 401,
-                        body: {
+                        body:JSON.stringify( {
                             error: {
                                 msg: "you don't have access to do this"
                             }
-                        }
+                        })
                     }
                 } else {
                     const discount = await axios.post('https://us-central1-mobileaccessories-fb6b5.cloudfunctions.net/bulkpanda/getdiscount', {
@@ -26,11 +26,11 @@ exports.handler = async function (event, context) {
                     if (discount.status !== 200) {
                         return {
                             statusCode: 404,
-                            body: {
+                            body:JSON.stringify( {
                                 error: {
                                     message: 'no discount found for you'
                                 }
-                            }
+                            })
                         }
                     } else {
                         const res = JSON.stringify(discount.data);
@@ -40,18 +40,17 @@ exports.handler = async function (event, context) {
                         };
                     }
                 }
-
-
-
             }
 
         } catch (error) {
             console.log(error);
+
             return {
-                statusCode: 500,
+                statusCode: error.response.status,
                 body: error.message
             };
+            
         }
     }
 
-}
+}  

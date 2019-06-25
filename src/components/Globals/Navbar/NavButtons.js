@@ -26,8 +26,9 @@ export default class NavButtons extends React.Component {
       if (true) {
         axios.post("/.netlify/functions/addDiscount", {
           email: email,
-          session : getCookie('snipcart_auth_cookie')
-        }).then(data => console.log('we have send an email of discount')).catch(e => console.log(e));
+          session : getCookie('snipcart_auth_cookie'),
+          id: window.Snipcart.api.user.current().id
+        }).then(data => console.log('we have send an email of discount',data)).catch(e => console.log(e));
       }
       
 
