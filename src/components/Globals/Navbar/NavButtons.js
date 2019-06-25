@@ -28,7 +28,7 @@ export default class NavButtons extends React.Component {
           email: email,
           session : getCookie('snipcart_auth_cookie'),
           id: window.Snipcart.api.user.current().id
-        }).then(data => console.log('we have send an email of discount',data)).catch(e => console.log(e));
+        }).then(data => console.log('we have added the discount')).catch(e => console.log(e));
       }
       
 
