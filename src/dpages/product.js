@@ -19,6 +19,8 @@ export default class product extends React.Component {
     }
   };
   componentDidMount() {
+    window.Snipcart.api.discounts.applyDiscountCode('I9I8KAQrw')
+
     if(window.localStorage.getItem('add-yopt').includes('yes')){
       let e = window.document.createElement("script");
 
