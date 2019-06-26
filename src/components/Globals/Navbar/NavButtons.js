@@ -4,33 +4,42 @@ import { IoIosCart, IoIosArrowDown } from 'react-icons/io';
 import { colors, transDefault } from '../../../utils/styles';
 import axios from 'axios';
 import {getCookie} from '../../../utils/utils';
+import Discounts from "../Discounts";
 export default class NavButtons extends React.Component {
   state = {
-    dropdownClass: ''
+    dropdownClass: '',
+    modalOpen: false,
+    callDiscounts: false
   }
   componentDidMount() {
     window.Snipcart.subscribe('page.validating', function (ev, data) {
       if ((ev.type === 'shipping-address' || ev.type === 'billing-address') && !data.phone.match(/^((\+92)|(0092))-{0,1}\d{3}-{0,1}\d{7}$|^\d{11}$|^\d{4}-\d{7}$/)) {
         ev.addError('phone', 'Please enter a valid pakistani number');
       }
-
-
     });
-    window.Snipcart.subscribe('authentication.success', function (email) {
+    window.Snipcart.subscribe('authentication.success',  (email)  => {
       const userCreationDate = window.Snipcart.api.user.current().creationDate;
       const milliseconds = parseInt("1000");
       const hours = Math.floor(milliseconds / 3600000);
       const differenceTime = Date.now() - new Date(userCreationDate);
       const minutes = Math.floor((differenceTime - (hours * 3600000)) / 60000);;
 
-      if (true) {
+      if (minutes < 5) {
         axios.post("/.netlify/functions/addDiscount", {
           email: email,
           session : getCookie('snipcart_auth_cookie'),
-          id: window.Snipcart.api.user.current().id
-        }).then(data => console.log('we have added the discount')).catch(e => console.log(e));
+          id: window.Snipcart.api.user.current().id,
+
+        }).then(res => {
+          console.log('new discount is added');
+          this.setState({callDiscounts: true})
+
+        }).catch(e => console.log(e));
+      }else{
+        this.setState({callDiscounts: true})
+
       }
-      
+
 
     });
   }
@@ -57,6 +66,12 @@ export default class NavButtons extends React.Component {
       logout: true
     })
   }
+  showModal = () => {
+    this.setState({
+      modalOpen: !this.state.modalOpen
+    });
+
+  }
   render() {
 
     let user = undefined;
@@ -66,9 +81,8 @@ export default class NavButtons extends React.Component {
     }
     return (
       <NavButtonsWrapper>
+        <Discounts modalOpen={this.state.modalOpen} showModal={this.showModal} callDiscounts={this.state.callDiscounts}/>
         <IoIosCart className="cart icon snipcart-checkout" />
-
-
 
         {
           typeof user !== "undefined" ? (
@@ -79,6 +93,7 @@ export default class NavButtons extends React.Component {
               <ul className={`my-account-dropdown ${this.state.dropdownClass}`}>
                 <li><span className="snipcart-user-profile ripple">Orders</span></li>
                 <li><span className="ripple" onClick={this.logout}>Logout</span></li>
+                <li onClick={this.showModal}>Wallet</li>
               </ul>
             </div>) : (<span className="snipcart-user-profile">
               Login & Signup
@@ -137,7 +152,7 @@ const NavButtonsWrapper = styled.div`
     width: 120%;
     box-shadow: 1px 1px 4px 1px grey;
     text-align: center;
-    bottom: -70px;
+    bottom: -100px;
     background: #fff;
     color: #444;
     display: none;

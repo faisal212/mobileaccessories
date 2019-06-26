@@ -36,6 +36,15 @@ const GlobalStyle = createGlobalStyle`
   padding: 0;
   box-sizing: border-box;
 }
+::-moz-selection { /* Code for Firefox */
+  color: #fff;
+  background: ${colors.mainOrange};
+}
+
+::selection {
+  color: #fff;
+  background: ${colors.mainOrange};
+}
 .background-white{
   background: #ffffff;
 }
@@ -155,6 +164,14 @@ a {
 }
 .snip-layout{
   font-family: 'Lato', sans-serif !important;
+
+}
+.pure-modal > * > .scrollable{
+  overflow: unset !important;
+}
+.pure-modal .panel-heading{
+  background: ${colors.mainOrange} !important;
+  color: #fff !important;
 
 }
 `;

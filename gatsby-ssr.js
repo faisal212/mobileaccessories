@@ -46,7 +46,7 @@ export const onRenderBody = ({ setPostBodyComponents }) => {
 	}
 
 	const components = [
-		<script key='snipcartJs' defer src={options.js} id="snipcart" data-api-key={options.apiKey} data-autopop={options.autopop}></script>
+		<script crossorigin key='snipcartJs' defer src={options.js} id="snipcart" data-api-key={options.apiKey} data-autopop={options.autopop}></script>
 		]
 	if(options.jquery){
 		components.unshift(<script defer  key='snipcartJquery' src={options.jquery}></script>)

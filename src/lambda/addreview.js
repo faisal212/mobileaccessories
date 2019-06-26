@@ -9,7 +9,7 @@ exports.handler = function (event, context, callback) {
         let body = querystring.parse(event.body);
     console.log(body);
     const email = body.user_email;
-    const rating = body.rating;
+    const rating = body.rating; 
     const title = body.title;
     const description = body.description;
     const name = body.user_name;

@@ -2620,6 +2620,11 @@ class-utils@^0.3.5:
     isobject "^3.0.0"
     static-extend "^0.1.1"
 
+classnames@^2.2.3:
+  version "2.2.6"
+  resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.6.tgz#43935bffdd291f326dad0a205309b38d00f650ce"
+  integrity sha512-JR/iSQOSt+LQIWwrwEzJ9uk0xfN3mTVYMwt1Ir5mUcSN6pU+V4zQFFaJsclJbPuAUQH+yfWef6tm7l1quW3C8Q==
+
 clean-css@^4.2.1:
   version "4.2.1"
   resolved "https://registry.yarnpkg.com/clean-css/-/clean-css-4.2.1.tgz#2d411ef76b8569b6d0c84068dabe85b0aa5e5c17"
@@ -9554,6 +9559,13 @@ react-dom@^16.8.6:
     prop-types "^15.6.2"
     scheduler "^0.13.6"
 
+react-dropdown@^1.6.4:
+  version "1.6.4"
+  resolved "https://registry.yarnpkg.com/react-dropdown/-/react-dropdown-1.6.4.tgz#8dce141bb26fb6b3c3696d16e06f4517728c57f4"
+  integrity sha512-zTlNRZ6vzjEPsodBNgh6Xjp9IempEx9sReH3crT2Jw4S6KW2wS/BRIH3d/grYf/iXARadDRD91//uUCs9yjoLg==
+  dependencies:
+    classnames "^2.2.3"
+
 react-error-overlay@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-3.0.0.tgz#c2bc8f4d91f1375b3dad6d75265d51cd5eeaf655"
@@ -9639,6 +9651,11 @@ react-modal-video@^1.2.2:
   integrity sha512-isfaRFvCZZRWkPvoPRzXL1FaHtI3PQHqkX2UrtOGjGUPNGZeMBDT5xPqON7h4e5CGvpf62XIq3lxT0InPKAUgw==
   dependencies:
     react-transition-group "^2.2.1"
+
+react-pure-modal@^1.5.1:
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/react-pure-modal/-/react-pure-modal-1.5.1.tgz#6233f6434cc6ca2667a3b51dbeb432c92f84e63c"
+  integrity sha512-ac5H4D9D6W1Mi7IMyFoNGxht+uK/YhFkB0S10rG6ptHs9B7kTvYic718u9mRPDep0AWhonl/pWT3E97dTWlrcg==
 
 react-reconciler@^0.20.0:
   version "0.20.4"

@@ -23,6 +23,7 @@ export const onServiceWorkerUpdateReady = () => {
 export const onInitialClientRender = () => {
   console.log("ReactDOM.render has executed");
   window.localStorage.setItem('add-yopt', 'yes');
+  
 }
 
 // export const wrapRootElement = ({element}) => (
