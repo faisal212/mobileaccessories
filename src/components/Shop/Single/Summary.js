@@ -2,8 +2,29 @@ import React from 'react'
 import styled from 'styled-components';
 import { colors, robotoFont } from '../../../utils/styles';
 import BuyButton from '../../Globals/Buttons/BuyButton';
-export default function Summary({ product }) {
+import Dropdown from 'react-dropdown'
+import { navigate } from "gatsby"
+
+
+
+function getMobiles(mobiles,slug){
+    const newdiscounts = mobiles.reduce((pv,cv,ci) => {
+        let obj = {
+            value: cv.slug,
+            label: cv.title
+        }
+        const data = cv.products.filter(data => data.slug ===slug );
+        if(data.length){
+            pv.push(obj);
+        }
+        return pv;
+    }, []);  
+    return newdiscounts;
+}
+
+export default function Summary({ product, mobiles }) {
     const description = product.description.description.split('\n');
+    const mobileData = getMobiles(mobiles,product.slug);
     return (
         <SummaryWrapper>
             <h1>{product.title}</h1>
@@ -14,6 +35,8 @@ export default function Summary({ product }) {
                 ))}
             </p>
            <BuyButton product={product}/>
+           <Dropdown options={mobileData}  onChange={e => navigate(`/${mobiles[0].category.slug}/mobiles/${e.value}/products/${product.slug}`)}  placeholder="Change Mobile" />
+
         </SummaryWrapper>
     )
 }

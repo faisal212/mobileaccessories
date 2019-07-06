@@ -36,11 +36,11 @@ export default class product extends React.Component {
 
   }
 
+
  
   render() {
-
-    const { node } = this.props.data.allContentfulProducts.edges[0];
-
+     const { node } = this.props.data.allContentfulProducts.edges[0];
+     const {mobiles} = this.props.data.allContentfulProducts.nodes[0];
     return (
       <Layout isHome={false} className="background-white">
         <SEO title={`${node.title} Mobile cases`} keywords={[`Product`, `cases`, `mobile accessories`, 'mobileaccessories', `${node.title}`]} />
@@ -52,7 +52,7 @@ export default class product extends React.Component {
                 {node.featureImage !== null ? (<FeatureImage image={node.featureImage} />) : ''}
               </Col>
               <Col sm={6}>
-                <Summary product={node} />
+                <Summary product={node} onChange={this.selectDiscount} mobiles={mobiles}  />
               </Col>
             </Row>
           </Container>
@@ -67,8 +67,22 @@ export default class product extends React.Component {
 export const query = graphql`
   query( $id: String!){
     allContentfulProducts(filter : {id: {eq: $id}}) {
+    nodes {
+      mobiles {
+        slug
+        title
+        products{
+          slug
+        }
+        category {
+          slug
+        }
+      }
+    }
     edges {
+      
       node {
+      
         id
         slug
         title
@@ -93,7 +107,7 @@ export const query = graphql`
             
           }
         }
-       
+
       }
     }
   }

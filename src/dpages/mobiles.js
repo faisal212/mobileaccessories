@@ -9,7 +9,6 @@ import ProductView from '../components/Shop/ProductView';
 import MainTransition from '../components/Globals/MainTransition';
 
 export default class category extends React.Component {
-
   state = {
     data: {
       node: {
@@ -36,7 +35,8 @@ export default class category extends React.Component {
         <ListHeading title={data.node.title} />
         <Container style={{padding: '50px 0'}} className="category">
           <Row>
-              {
+
+            {
                 data.node.products !== null ? 
                 data.node.products.map((product) => (
                   <Col xs={6} sm={3} key={product.id} >
@@ -44,9 +44,8 @@ export default class category extends React.Component {
                   </Col>
                  ))
                 : ('')
-              
             }
-           
+
           </Row>
         </Container>
       </Layout>
