@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { IoIosCart, IoIosArrowDown } from 'react-icons/io';
 import { colors, transDefault } from '../../../utils/styles';
 import axios from 'axios';
-import {getCookie} from '../../../utils/utils';
+import { getCookie } from '../../../utils/utils';
 import Discounts from "../Discounts";
 export default class NavButtons extends React.Component {
   state = {
@@ -17,7 +17,7 @@ export default class NavButtons extends React.Component {
         ev.addError('phone', 'Please enter a valid pakistani number');
       }
     });
-    window.Snipcart.subscribe('authentication.success',  (email)  => {
+    window.Snipcart.subscribe('authentication.success', (email) => {
       const userCreationDate = window.Snipcart.api.user.current().creationDate;
       const milliseconds = parseInt("1000");
       const hours = Math.floor(milliseconds / 3600000);
@@ -27,25 +27,43 @@ export default class NavButtons extends React.Component {
       if (minutes < 5) {
         axios.post("/.netlify/functions/addDiscount", {
           email: email,
-          session : getCookie('snipcart_auth_cookie'),
+          session: getCookie('snipcart_auth_cookie'),
           id: window.Snipcart.api.user.current().id,
 
         }).then(res => {
           console.log('new discount is added');
-          this.setState({callDiscounts: true})
+          this.setState({ callDiscounts: true })
 
         }).catch(e => console.log(e));
-      }else{
-        this.setState({callDiscounts: true})
+      } else {
+        this.setState({ callDiscounts: true })
 
       }
 
 
     });
+
+    window.Snipcart.subscribe('page.change', function (page) {
+      if (page.includes('cart-content')) {
+        if (window.Snipcart.api.discounts.all().length) {
+          window.Snipcart.api.discounts.remove(window.Snipcart.api.discounts.all()[0].id)
+            .then(function (discount) {
+              applyCode();
+            })
+            .fail(function (error) {
+              console.log('Something went wrong when removing the discount', error);
+            });
+        } else {
+          applyCode();
+        }
+
+      }
+    });
   }
   componentWillUnmount() {
     window.Snipcart.unsubscribe('page.validating');
     window.Snipcart.unsubscribe('authentication.success');
+    window.Snipcart.unsubscribe('page.change');
   }
   showDropdown = () => {
 
@@ -81,7 +99,7 @@ export default class NavButtons extends React.Component {
     }
     return (
       <NavButtonsWrapper>
-        <Discounts modalOpen={this.state.modalOpen} showModal={this.showModal} callDiscounts={this.state.callDiscounts}/>
+        <Discounts modalOpen={this.state.modalOpen} showModal={this.showModal} callDiscounts={this.state.callDiscounts} />
         <IoIosCart className="cart icon snipcart-checkout" />
 
         {
@@ -171,3 +189,16 @@ const NavButtonsWrapper = styled.div`
 }
 `;
 
+
+
+function applyCode() {
+  if (typeof window.selectedWallet !== 'undefined' && window.Snipcart.api.items.count() !== 0) {
+    window.Snipcart.api.discounts.applyDiscountCode(window.selectedWallet.value)
+      .then(function (appliedCode) {
+        console.log('discount is applied');
+      })
+      .fail(function (error) {
+        console.log("Something went wrong when adding the discount code, are you sure it's a valid code?", error);
+      });
+  }
+}
