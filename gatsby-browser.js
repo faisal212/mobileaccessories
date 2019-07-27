@@ -1,3 +1,8 @@
+import React from 'react';
+
+import BulkPanda from "./src/components/Globals/BulkPanda";
+import User from './src/components/Globals/User';
+
 // import Firebase,{FirebaseContext} from "./src/services/firebase";
 // import AuthContextProvider from './src/components/Globals/AuthContextProvider';
 
@@ -26,9 +31,11 @@ export const onInitialClientRender = () => {
   
 }
 
-// export const wrapRootElement = ({element}) => (
-//   <FirebaseContext.Provider value={new Firebase()}>
-//     <AuthContextProvider >{element}</AuthContextProvider>
-//   </FirebaseContext.Provider>
-// );
+export const wrapRootElement = ({element}) => (
+  <User>
+      <BulkPanda>
+        {element}
+      </BulkPanda>
+  </User>
+);
 

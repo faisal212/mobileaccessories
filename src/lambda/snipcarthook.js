@@ -1,6 +1,8 @@
 const axios = require('axios');
 const url = require('url');
 const sgMail = require('@sendgrid/mail');
+let conn = require('./databaseconnection');
+const UserSchema = require('./models/user');
 
 const imgUrl = "https://businessoverbroadway.com/wp-content/uploads/2011/10/MobileApp_Reviews.png";
 const template = (body) => {
@@ -77,6 +79,23 @@ exports.handler = async function (event, context, callback) {
             
             if (eventName === 'order.completed') {
                 body = body.content;
+                if(body.discounts.length){
+                    if (conn == null) {
+                        conn = await db();
+                        
+                        conn.model('User', UserSchema);
+                    }
+                    
+                    const User = conn.model('User');
+                    const isUser = await User.findOne({ email: userSnipcart.data.email });
+                    if(isUser){
+                       isUser.numberofUsages = isUser.numberofUsages + 1;
+                       isUser.wallet = isUser.wallet - body.discounts[0].amountSaved;
+                       await isUser.save();
+
+                    }
+
+                }
                 let city = await axios.get(`https://mobileaccessories-fb6b5.firebaseio.com/citieslist.json?orderBy="CityName"&equalTo="${body.shippingAddressCity.toUpperCase()}"`);
                 city = city.data;
                 
@@ -101,11 +120,11 @@ exports.handler = async function (event, context, callback) {
                     html: template(body)
                 };
                 console.log(msg);
-                   await sgMail.send(msg);
-                  callback(null, {
+                await sgMail.send(msg);
+                 return {
                     statusCode: 201,
                     body: 'review Mail send'
-                 });
+                 };
             }
 
         } catch (error) {
@@ -117,4 +136,5 @@ exports.handler = async function (event, context, callback) {
         }
     }
 }
+
 

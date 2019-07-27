@@ -1,128 +1,113 @@
-import React from "react"
+import React, { useState, useEffect, useContext } from "react"
 import styled from 'styled-components';
 import { IoIosCart, IoIosArrowDown } from 'react-icons/io';
 import { colors, transDefault } from '../../../utils/styles';
 import axios from 'axios';
 import { getCookie } from '../../../utils/utils';
 import Discounts from "../Discounts";
-export default class NavButtons extends React.Component {
-  state = {
-    dropdownClass: '',
-    modalOpen: false,
-    callDiscounts: false
-  }
-  componentDidMount() {
+import { UserContext } from "../User";
+
+
+
+export default function NavButtons() {
+
+  const [user, setUser] = useContext(UserContext);
+  const [modalOpen, setmodalOpen] = useState(false);
+  useEffect(() => {
+    console.log('mount');
+
     window.Snipcart.subscribe('page.validating', function (ev, data) {
       if ((ev.type === 'shipping-address' || ev.type === 'billing-address') && !data.phone.match(/^((\+92)|(0092))-{0,1}\d{3}-{0,1}\d{7}$|^\d{11}$|^\d{4}-\d{7}$/)) {
         ev.addError('phone', 'Please enter a valid pakistani number');
       }
     });
-    window.Snipcart.subscribe('authentication.success', (email) => {
+
+    window.Snipcart.subscribe('authentication.success', async (email) => {
+      setUser(window.Snipcart.api.user.current());
       const userCreationDate = window.Snipcart.api.user.current().creationDate;
       const milliseconds = parseInt("1000");
       const hours = Math.floor(milliseconds / 3600000);
       const differenceTime = Date.now() - new Date(userCreationDate);
       const minutes = Math.floor((differenceTime - (hours * 3600000)) / 60000);;
 
-      if (minutes < 5) {
-        axios.post("/.netlify/functions/addDiscount", {
-          email: email,
-          session: getCookie('snipcart_auth_cookie'),
-          id: window.Snipcart.api.user.current().id,
-
-        }).then(res => {
-          console.log('new discount is added');
-          this.setState({ callDiscounts: true })
-
-        }).catch(e => console.log(e));
-      } else {
-        this.setState({ callDiscounts: true })
-
-      }
-
-
-    });
-
-    window.Snipcart.subscribe('page.change', function (page) {
-      if (page.includes('cart-content')) {
-        if (window.Snipcart.api.discounts.all().length) {
-          window.Snipcart.api.discounts.remove(window.Snipcart.api.discounts.all()[0].id)
-            .then(function (discount) {
-              applyCode();
-            })
-            .fail(function (error) {
-              console.log('Something went wrong when removing the discount', error);
-            });
+      try {
+        if (minutes < 5) {
+          await axios.post("/.netlify/functions/adddiscount", {
+            session: getCookie('snipcart_auth_cookie'),
+          });
+          const result = await axios.post("/.netlify/functions/getdiscount", {
+            session: getCookie('snipcart_auth_cookie'),
+          });
+          console.log(result)
         } else {
-          applyCode();
+          const result = await axios.post("/.netlify/functions/getdiscount", {
+            session: getCookie('snipcart_auth_cookie'),
+          });
+          console.log(result)
         }
+      } catch (error) {
+        console.log(error)
+      }
+
+
+    });
+
+    window.Snipcart.subscribe('page.change', (page) => {
+      if (page.includes('cart-content')) {
+
+      }
+
+    });
+
+    window.Snipcart.subscribe('cart.ready', (data) => {
+      console.log(window.Snipcart.api.user.current())
+      if (typeof window.Snipcart.api.user.current() !== 'undefined') {
+        setUser(window.Snipcart.api.user.current());
 
       }
     });
-  }
-  componentWillUnmount() {
-    window.Snipcart.unsubscribe('page.validating');
-    window.Snipcart.unsubscribe('authentication.success');
-    window.Snipcart.unsubscribe('page.change');
-  }
-  showDropdown = () => {
+    return () => {
+      window.Snipcart.unsubscribe('page.validating');
+      window.Snipcart.unsubscribe('authentication.success');
+      window.Snipcart.unsubscribe('page.change');
+      window.Snipcart.unsubscribe('cart.ready');
+    };
+  }, [])
 
-    if (this.state.dropdownClass === '') {
-      this.setState({
-        dropdownClass: 'show'
-      });
-    } else {
-      this.setState({
-        dropdownClass: ''
-      });
-    }
-  }
 
-  logout = () => {
+
+
+  const logoutButton = () => {
     window.Snipcart.api.user.logout();
-    this.setState({
-      logout: true
-    })
+    setUser(undefined);
   }
-  showModal = () => {
-    this.setState({
-      modalOpen: !this.state.modalOpen
-    });
+  const showModal = () => {
+    setmodalOpen(!modalOpen);
 
   }
-  render() {
 
-    let user = undefined;
-    if (typeof window !== 'undefined') {
-      if (typeof window.Snipcart.api !== 'undefined')
-        user = window.Snipcart.api.user.current();
-    }
-    return (
-      <NavButtonsWrapper>
-        <Discounts modalOpen={this.state.modalOpen} showModal={this.showModal} callDiscounts={this.state.callDiscounts} />
-        <IoIosCart className="cart icon snipcart-checkout" />
+  return (
+    <NavButtonsWrapper>
+      <Discounts onClick={showModal} modalOpen={modalOpen} />
+      <IoIosCart className="cart icon snipcart-checkout" />
 
-        {
-          typeof user !== "undefined" ? (
-            <div className="my-account" >
-              <span>{user.email}</span>
-
-              <IoIosArrowDown className=" icon " />
-              <ul className={`my-account-dropdown ${this.state.dropdownClass}`}>
-                <li><span className="snipcart-user-profile ripple">Orders</span></li>
-                <li><span className="ripple" onClick={this.logout}>Logout</span></li>
-                <li onClick={this.showModal}>Wallet</li>
-              </ul>
-            </div>) : (<span className="snipcart-user-profile">
-              Login & Signup
-        </span>)
-        }
-      </NavButtonsWrapper>
-    )
-  }
+      {
+        typeof user !== "undefined" ? (
+          <div className="my-account" >
+            <span>{user.email}</span>
+            <IoIosArrowDown className=" icon " />
+            <ul className={`my-account-dropdown `}>
+              <li><span className="snipcart-user-profile ripple">Orders</span></li>
+              <li><span className="ripple" onClick={logoutButton}>Logout</span></li>
+              <li onClick={showModal}>Wallet</li>
+            </ul>
+          </div>) : (<span className="snipcart-user-profile">
+            Login & Signup
+      </span>)
+      }
+    </NavButtonsWrapper>
+  )
 }
-
-
 
 const NavButtonsWrapper = styled.div`
 .icon{
