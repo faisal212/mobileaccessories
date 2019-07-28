@@ -82,7 +82,7 @@ export default function NavButtons() {
     setUser(undefined);
   }
   const showModal = () => {
-    setmodalOpen(!modalOpen);
+    setmodalOpen({});
 
   }
 
@@ -92,7 +92,7 @@ export default function NavButtons() {
       <IoIosCart className="cart icon snipcart-checkout" />
 
       {
-        typeof user !== "undefined" ? (
+        typeof user.email !== "undefined" ? (
           <div className="my-account" >
             <span>{user.email}</span>
             <IoIosArrowDown className=" icon " />
