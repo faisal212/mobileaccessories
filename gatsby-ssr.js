@@ -68,3 +68,4 @@ export const wrapRootElement = ({element}) => (
 		  {element}
 		</BulkPanda>
 	</User>
+)
