@@ -88,23 +88,7 @@ export default function NavButtons() {
 
   return (
     <NavButtonsWrapper>
-      {modalOpen && <Discounts onClick={showModal} modalOpen={modalOpen} />}
-      <IoIosCart className="cart icon snipcart-checkout" />
-
-      {
-        typeof user !== "undefined" ? (
-          <div className="my-account" >
-            <span>{user.email}</span>
-            <IoIosArrowDown className=" icon " />
-            <ul className={`my-account-dropdown `}>
-              <li><span className="snipcart-user-profile ripple">Orders</span></li>
-              <li><span className="ripple" onClick={logoutButton}>Logout</span></li>
-              <li onClick={showModal}>Wallet</li>
-            </ul>
-          </div>) : (<span className="snipcart-user-profile">
-            Login & Signup
-      </span>)
-      }
+     hello
     </NavButtonsWrapper>
   )
 }
