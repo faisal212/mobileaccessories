@@ -4,7 +4,7 @@ export const UserContext = createContext();
 
 
 export default function User(props) {
-    const [auth, setauth] = useState({});
+    const [auth, setauth] = useState(undefined);
       return (
       <UserContext.Provider value={[auth ,setauth]}>
         {props.children}

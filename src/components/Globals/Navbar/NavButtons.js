@@ -11,8 +11,8 @@ import { UserContext } from "../User";
 
 export default function NavButtons() {
 
-  //const [user, setUser] = useContext(UserContext);
- // const [modalOpen, setmodalOpen] = useState(false);
+  const [user, setUser] = useContext(UserContext);
+  const [modalOpen, setmodalOpen] = useState(false);
   useEffect(() => {
     console.log('mount');
 
@@ -62,7 +62,7 @@ export default function NavButtons() {
     window.Snipcart.subscribe('cart.ready', (data) => {
       console.log(window.Snipcart.api.user.current())
       if (typeof window.Snipcart.api.user.current() !== 'undefined') {
-        //setUser(window.Snipcart.api.user.current());
+        setUser(window.Snipcart.api.user.current());
 
       }
     });
@@ -79,16 +79,32 @@ export default function NavButtons() {
 
   const logoutButton = () => {
     window.Snipcart.api.user.logout();
-   // setUser({});
+    setUser(undefined);
   }
   const showModal = () => {
-  //  setmodalOpen(!modalOpen);
+    setmodalOpen(!modalOpen);
 
   }
 
   return (
     <NavButtonsWrapper>
-     faisal
+      {modalOpen && <Discounts onClick={showModal} modalOpen={modalOpen} />}
+      <IoIosCart className="cart icon snipcart-checkout" />
+
+      {
+        typeof user !== "undefined" ? (
+          <div className="my-account" >
+            <span>{user.email}</span>
+            <IoIosArrowDown className=" icon " />
+            <ul className={`my-account-dropdown `}>
+              <li><span className="snipcart-user-profile ripple">Orders</span></li>
+              <li><span className="ripple" onClick={logoutButton}>Logout</span></li>
+              <li onClick={showModal}>Wallet</li>
+            </ul>
+          </div>) : (<span className="snipcart-user-profile">
+            Login & Signup
+      </span>)
+      }
     </NavButtonsWrapper>
   )
 }
