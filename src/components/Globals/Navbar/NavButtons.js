@@ -12,7 +12,7 @@ import { UserContext } from "../User";
 export default function NavButtons() {
 
   const [user, setUser] = useContext(UserContext);
-  const [modalOpen, setmodalOpen] = useState(false);
+ // const [modalOpen, setmodalOpen] = useState(false);
   useEffect(() => {
     console.log('mount');
 
@@ -82,7 +82,7 @@ export default function NavButtons() {
     setUser({});
   }
   const showModal = () => {
-    setmodalOpen(!modalOpen);
+  //  setmodalOpen(!modalOpen);
 
   }
 
