@@ -79,10 +79,10 @@ export default function NavButtons() {
 
   const logoutButton = () => {
     window.Snipcart.api.user.logout();
-    setUser(undefined);
+    setUser({});
   }
   const showModal = () => {
-    setmodalOpen({});
+    setmodalOpen(!modalOpen);
 
   }
 
