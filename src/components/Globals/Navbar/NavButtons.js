@@ -88,7 +88,7 @@ export default function NavButtons() {
 
   return (
     <NavButtonsWrapper>
-      <Discounts onClick={showModal} modalOpen={modalOpen} />
+      {modalOpen && <Discounts onClick={showModal} modalOpen={modalOpen} />}
       <IoIosCart className="cart icon snipcart-checkout" />
 
       {
