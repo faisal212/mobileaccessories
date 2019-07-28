@@ -4,9 +4,9 @@ export const UserContext = createContext();
 
 
 export default function User(props) {
-    const [auth, setauth] = useState(undefined);
+    const [user, setUser] = useState(undefined);
       return (
-      <UserContext.Provider value={[auth ,setauth]}>
+      <UserContext.Provider value={[user ,setUser]}>
         {props.children}
       </UserContext.Provider>
       )
