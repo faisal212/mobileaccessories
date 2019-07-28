@@ -11,7 +11,7 @@ import { UserContext } from "../User";
 
 export default function NavButtons() {
 
-  const [user, setUser] = useContext(UserContext);
+  //const [user, setUser] = useContext(UserContext);
  // const [modalOpen, setmodalOpen] = useState(false);
   useEffect(() => {
     console.log('mount');
@@ -62,7 +62,7 @@ export default function NavButtons() {
     window.Snipcart.subscribe('cart.ready', (data) => {
       console.log(window.Snipcart.api.user.current())
       if (typeof window.Snipcart.api.user.current() !== 'undefined') {
-        setUser(window.Snipcart.api.user.current());
+        //setUser(window.Snipcart.api.user.current());
 
       }
     });
@@ -79,7 +79,7 @@ export default function NavButtons() {
 
   const logoutButton = () => {
     window.Snipcart.api.user.logout();
-    setUser({});
+   // setUser({});
   }
   const showModal = () => {
   //  setmodalOpen(!modalOpen);
