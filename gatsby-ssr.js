@@ -27,6 +27,9 @@
 
 
 import React from 'react'
+import BulkPanda from "./src/components/Globals/BulkPanda";
+import User from './src/components/Globals/User';
+
 let warning = false
 
 export const onRenderBody = ({ setPostBodyComponents }) => {
@@ -57,3 +60,11 @@ export const onRenderBody = ({ setPostBodyComponents }) => {
 
 	return setPostBodyComponents(components)
 }
+
+
+export const wrapRootElement = ({element}) => (
+	<User>
+		<BulkPanda>
+		  {element}
+		</BulkPanda>
+	</User>
