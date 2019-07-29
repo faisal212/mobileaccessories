@@ -94,7 +94,7 @@ export default function NavButtons() {
 
  return(
   <NavButtonsWrapper>
-  <Discounts onClick={showModal} modalOpen={modalOpen} amount={wallet.amount}/>
+  {wallet && <Discounts onClick={showModal} modalOpen={modalOpen} amount={wallet.amount}/>}
   <IoIosCart className="cart icon snipcart-checkout" />
 
   {
