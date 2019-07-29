@@ -113,7 +113,7 @@ export default function NavButtons() {
   }
 </NavButtonsWrapper>
  )
-
+ 
 }
 
 const NavButtonsWrapper = styled.div`
