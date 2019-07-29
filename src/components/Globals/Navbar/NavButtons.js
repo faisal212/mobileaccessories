@@ -6,12 +6,15 @@ import axios from 'axios';
 import { getCookie } from '../../../utils/utils';
 import Discounts from "../Discounts";
 import { UserContext } from "../User";
+import {WalletContext} from "../BulkPanda";
 
 
 
 export default function NavButtons() {
 
   const [user, setUser] = useContext(UserContext);
+  const  [wallet,setWallet]= useContext(WalletContext)
+
   const [modalOpen, setmodalOpen] = useState(false);
   useEffect(() => {
     console.log('mount');
@@ -43,7 +46,10 @@ export default function NavButtons() {
           const result = await axios.post("/.netlify/functions/getdiscount", {
             session: getCookie('snipcart_auth_cookie'),
           });
-          console.log(result)
+          setWallet({
+            amount: result.data.wallet,
+            code: result.data.code
+          })
         }
       } catch (error) {
         console.log(error)
@@ -88,7 +94,7 @@ export default function NavButtons() {
 
  return(
   <NavButtonsWrapper>
-  <Discounts onClick={showModal} modalOpen={modalOpen} />
+  <Discounts onClick={showModal} modalOpen={modalOpen} amount={wallet.amount}/>
   <IoIosCart className="cart icon snipcart-checkout" />
 
   {

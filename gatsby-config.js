@@ -74,6 +74,12 @@ module.exports = {
       },
     },
     {
+      resolve: 'gatsby-plugin-snipcart',
+      options: {
+        apiKey:  process.env.GATSBY_SNIPCART_API
+      }
+    },
+    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: "Mobile Accessories",

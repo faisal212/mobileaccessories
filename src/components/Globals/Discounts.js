@@ -1,8 +1,8 @@
-import React,{useState,useRef} from 'react'
+import React,{useRef} from 'react'
 import PureModal from 'react-pure-modal';
 import 'react-pure-modal/dist/react-pure-modal.min.css';
 
-export default function Discounts({modalOpen}) {
+export default function Discounts({modalOpen,amount}) {
   const modal = useRef("modal")
   return (
     <PureModal
@@ -15,7 +15,7 @@ export default function Discounts({modalOpen}) {
       ref={modal}
 
     >
-      your total discount
+      You have ${amount}Rs in your wallet
     </PureModal>
   )
 }
