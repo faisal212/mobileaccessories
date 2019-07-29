@@ -6,18 +6,17 @@ import axios from 'axios';
 import { getCookie } from '../../../utils/utils';
 import Discounts from "../Discounts";
 import { UserContext } from "../User";
-import {WalletContext} from "../BulkPanda";
+import { WalletContext } from "../BulkPanda";
 
 
 
 export default function NavButtons() {
 
   const [user, setUser] = useContext(UserContext);
-  const  [wallet,setWallet]= useContext(WalletContext)
+  const [wallet, setWallet] = useContext(WalletContext)
 
   const [modalOpen, setmodalOpen] = useState(false);
   useEffect(() => {
-    console.log('mount');
 
     window.Snipcart.subscribe('page.validating', function (ev, data) {
       if ((ev.type === 'shipping-address' || ev.type === 'billing-address') && !data.phone.match(/^((\+92)|(0092))-{0,1}\d{3}-{0,1}\d{7}$|^\d{11}$|^\d{4}-\d{7}$/)) {
@@ -60,7 +59,15 @@ export default function NavButtons() {
 
     window.Snipcart.subscribe('page.change', (page) => {
       if (page.includes('cart-content')) {
-
+        if(wallet.code){
+          window.Snipcart.api.discounts.applyDiscountCode(wallet.code)
+          .then(function (appliedCode) {
+            console.log('wallet applied');
+          })
+          .fail(function (error) {
+            console.log("Something went wrong when adding the discount code, are you sure it's a valid code?", error);
+          });
+        }
       }
 
     });
@@ -92,28 +99,28 @@ export default function NavButtons() {
 
   }
 
- return(
-  <NavButtonsWrapper>
-  {wallet && <Discounts onClick={showModal} modalOpen={modalOpen} amount={wallet.amount}/>}
-  <IoIosCart className="cart icon snipcart-checkout" />
+  return (
+    <NavButtonsWrapper>
+      {wallet && <Discounts onClick={showModal} modalOpen={modalOpen} amount={wallet.amount} />}
+      <IoIosCart className="cart icon snipcart-checkout" />
 
-  {
-    typeof user !== "undefined" ? (
-      <div className="my-account" >
-        <span>{user.email}</span>
-        <IoIosArrowDown className=" icon " />
-        <ul className={`my-account-dropdown `}>
-          <li><span className="snipcart-user-profile ripple">Orders</span></li>
-          <li><span className="ripple" onClick={logoutButton}>Logout</span></li>
-          <li onClick={showModal}>Wallet</li>
-        </ul>
-      </div>) : (<span className="snipcart-user-profile">
-        Login & Signup
+      {
+        typeof user !== "undefined" ? (
+          <div className="my-account" >
+            <span>{user.email}</span>
+            <IoIosArrowDown className=" icon " />
+            <ul className={`my-account-dropdown `}>
+              <li><span className="snipcart-user-profile ripple">Orders</span></li>
+              <li><span className="ripple" onClick={logoutButton}>Logout</span></li>
+              <li onClick={showModal}>Wallet</li>
+            </ul>
+          </div>) : (<span className="snipcart-user-profile">
+            Login & Signup
   </span>)
-  }
-</NavButtonsWrapper>
- )
- 
+      }
+    </NavButtonsWrapper>
+  )
+
 }
 
 const NavButtonsWrapper = styled.div`

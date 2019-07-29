@@ -1,13 +1,13 @@
 import React,{useState,createContext} from 'react';
 
-export const WalletContext = createContext({
-  amount: 0,
-  code: null
-});
+export const WalletContext = createContext();
 
 
 export default function BulkPanda(props) {
-    const [wallet, setWallet] = useState(null);
+    const [wallet, setWallet] = useState({
+      amount: 0,
+      code: null
+    });
       return (
       <WalletContext.Provider value={[wallet,setWallet]}>
         {props.children}

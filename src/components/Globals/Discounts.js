@@ -15,7 +15,7 @@ export default function Discounts({modalOpen,amount}) {
       ref={modal}
 
     >
-      You have ${amount}Rs in your wallet
+      You have {amount}Rs in your wallet
     </PureModal>
   )
 }
