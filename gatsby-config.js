@@ -55,23 +55,12 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      resolve: 'gatsby-plugin-web-font-loader',
       options: {
-        fonts: [
-          {
-            family: `Montserrat`,
-            variants: [`300`,`400`,`500`, `700`]
-          },
-          {
-            family: `Lato`,
-            variants: [`300`,`400`,`600`,`700`]
-          },
-          {
-            family: `Roboto`,
-            variants: [`300`,`400`]
-          },
-        ],
-      },
+        google: {
+          families: ['Montserrat:300,400,700', 'Lato:300,400,600,700']
+        }
+      }
     },
     {
       resolve: 'gatsby-plugin-snipcart',
