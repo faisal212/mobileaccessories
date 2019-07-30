@@ -60,6 +60,7 @@ export default function NavButtons() {
     window.Snipcart.subscribe('page.change', (page) => {
       if (page.includes('cart-content')) {
         if(wallet.code){
+          console.log('i am here');
           window.Snipcart.api.discounts.applyDiscountCode(wallet.code)
           .then(function (appliedCode) {
             console.log('wallet applied');
