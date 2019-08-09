@@ -6,7 +6,7 @@ export default function CopyRight() {
   return (
    <CopyRightWrapper>
        <Container>
-            <p>Copyright &copy; 2019 Xiaomi. All Rights Reserved -Developed By Selecto Solutions</p>
+            <p>Copyright &copy; 2019 Smart Reality Tech (Pvt.) Ltd.</p>
        </Container>
    </CopyRightWrapper>
   )
@@ -15,7 +15,7 @@ export default function CopyRight() {
 const CopyRightWrapper = styled.div`
     background: #333;
 
-    padding: 15px 0;
+    padding: 10px 0;
     color: #fff;
     p{
         font-size: 11px;

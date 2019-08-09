@@ -29,7 +29,8 @@ export default function NavbarHeader({ handleNavbar, isHome} ) {
                     )
                 }
                 <Link   bg="#663399" to='/' className="logo">
-                    <img src={logo} alt="company name" />
+                    {/* <img src={logo} alt="company name" /> */}
+                    BULKPANDA
                 </Link>
 
             </HeaderWrapper>
@@ -41,6 +42,11 @@ padding: 0.4rem 1rem;
 display: flex;
 align-items: center;
 
+.logo {
+    font-family: 'Lato',sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+}
 .icon{
     cursor: pointer;
     font-size: 2rem;
