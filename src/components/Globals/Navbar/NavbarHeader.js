@@ -30,8 +30,8 @@ export default function NavbarHeader({ handleNavbar, isHome} ) {
                     )
                 }
                 <Link   bg="#663399" to='/' className="logo">
-                    <img src={orangeLogo}  class="dark-logo" alt="company name" />
-                    <img src={whiteLogo}  class="white-logo" alt="company name" />
+                    <img src={orangeLogo}  className="dark-logo" alt="company name" />
+                    <img src={whiteLogo}  className="white-logo" alt="company name" />
              </Link>
 
             </HeaderWrapper>
