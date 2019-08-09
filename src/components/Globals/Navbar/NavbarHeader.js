@@ -1,5 +1,6 @@
 import React from 'react'
-import logo from '../../../images/logo.png';
+import whiteLogo from '../../../images/White-Panda.png';
+import orangeLogo from '../../../images/Orange-Panda.png';
 import { IoIosArrowRoundBack,IoIosMenu} from 'react-icons/io';
 import styled from 'styled-components';
 import {Link} from "gatsby";
@@ -29,9 +30,9 @@ export default function NavbarHeader({ handleNavbar, isHome} ) {
                     )
                 }
                 <Link   bg="#663399" to='/' className="logo">
-                    {/* <img src={logo} alt="company name" /> */}
-                    BULKPANDA
-                </Link>
+                    <img src={orangeLogo}  class="dark-logo" alt="company name" />
+                    <img src={whiteLogo}  class="white-logo" alt="company name" />
+             </Link>
 
             </HeaderWrapper>
     )
@@ -42,10 +43,16 @@ padding: 0.4rem 1rem;
 display: flex;
 align-items: center;
 
-.logo {
-    font-family: 'Lato',sans-serif;
-    font-size: 20px;
-    font-weight: 700;
+.logo img {
+    width: 68px;
+
+}
+.dark-logo {
+   display: inline-block;
+
+}
+.white-logo{
+    display: none;
 }
 .icon{
     cursor: pointer;
@@ -56,6 +63,15 @@ align-items: center;
     }
 }
 
+@media (max-width:767px) {
+    .dark-logo {
+   display: none;
+
+}
+.white-logo{
+    display: inline-block;
+}
+}
 .back-icon{
     font-size: 3rem;
 }

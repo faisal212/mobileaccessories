@@ -7,7 +7,7 @@
 
 import React  from "react"
 import PropTypes from "prop-types"
-import { createGlobalStyle } from 'styled-components';
+import styled,{createGlobalStyle} from 'styled-components';
 import {colors,headingFont} from '../utils/styles';
 import Navbar from './Globals/Navbar';
 import Footer from './Globals/Footer';
@@ -20,7 +20,9 @@ const Layout = ({ children ,isHome}) => {
     <Navbar isHome={isHome}/>
     
     <ScreenClassProvider>
+        <div className="all-main-content">
         {children}  
+        </div>
     </ScreenClassProvider>    
     <Footer/>
   </React.Fragment>
@@ -50,6 +52,9 @@ const GlobalStyle = createGlobalStyle`
 }
 html{
   font-size: 16px;
+}
+.all-main-content{
+  min-height: 89vh;
 }
 @media (max-width:767px){
   html{
@@ -174,6 +179,7 @@ a {
   color: #fff !important;
 
 }
+
 `;
 
 export default Layout

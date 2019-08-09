@@ -15,7 +15,7 @@ export default function CopyRight() {
 const CopyRightWrapper = styled.div`
     background: #333;
 
-    padding: 10px 0;
+    padding: 15px 0;
     color: #fff;
     p{
         font-size: 11px;
