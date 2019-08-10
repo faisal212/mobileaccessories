@@ -1,6 +1,6 @@
 import React from 'react'
 import whiteLogo from '../../../images/transparent-panda.png';
-import orangeLogo from '../../../images/black-panda.png';
+import orangeLogo from '../../../images/dark-logo.png';
 import { IoIosArrowRoundBack,IoIosMenu} from 'react-icons/io';
 import styled from 'styled-components';
 import {Link} from "gatsby";
