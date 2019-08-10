@@ -1,6 +1,6 @@
 import React from 'react'
-import whiteLogo from '../../../images/White-Panda.png';
-import orangeLogo from '../../../images/Orange-Panda.png';
+import whiteLogo from '../../../images/white-panda.png';
+import orangeLogo from '../../../images/black-panda.png';
 import { IoIosArrowRoundBack,IoIosMenu} from 'react-icons/io';
 import styled from 'styled-components';
 import {Link} from "gatsby";
@@ -43,8 +43,11 @@ padding: 0.4rem 1rem;
 display: flex;
 align-items: center;
 
+.logo{
+    position: absolute;
+}
 .logo img {
-    width: 68px;
+    width: 130px;
 
 }
 .dark-logo {
@@ -64,6 +67,13 @@ align-items: center;
 }
 
 @media (max-width:767px) {
+    .logo{
+        position: static;
+    }
+    .logo img {
+        width: 90px;
+        margin-left:15px;
+    }
     .dark-logo {
    display: none;
 
