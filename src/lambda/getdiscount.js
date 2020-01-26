@@ -23,7 +23,6 @@ exports.handler = async function (event, context) {
 
             if (conn == null) {
                 conn = await db();
-                
                 conn.model('User', UserSchema);
             }
             

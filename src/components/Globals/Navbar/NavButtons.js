@@ -13,12 +13,27 @@ import { WalletContext } from "../BulkPanda";
 export default function NavButtons() {
 
   const [user, setUser] = useContext(UserContext);
-  const [wallet, setWallet] = useContext(WalletContext)
+  const [wallet, setWallet] = useContext(WalletContext);
+  const [count, setCount] = useState(0);
 
   const [modalOpen, setmodalOpen] = useState(false);
-  useEffect(() => {
 
-    window.Snipcart.subscribe('page.validating', function (ev, data) {
+  const getDiscount = async() =>{
+    const result = await axios.post("/.netlify/functions/getdiscount", {
+      session: getCookie('snipcart_auth_cookie'),
+    });
+    setWallet({
+      amount: result.data.wallet,
+      code: result.data.code
+    });
+  } 
+  useEffect( () => {
+    if(count=== 0 && typeof window.Snipcart.api.user.current()!== "undefined"){
+      
+      getDiscount();  
+      setCount(1);
+    }
+      window.Snipcart.subscribe('page.validating', function (ev, data) {
       if ((ev.type === 'shipping-address' || ev.type === 'billing-address') && !data.phone.match(/^((\+92)|(0092))-{0,1}\d{3}-{0,1}\d{7}$|^\d{11}$|^\d{4}-\d{7}$/)) {
         ev.addError('phone', 'Please enter a valid pakistani number');
       }
@@ -31,7 +46,7 @@ export default function NavButtons() {
       const hours = Math.floor(milliseconds / 3600000);
       const differenceTime = Date.now() - new Date(userCreationDate);
       const minutes = Math.floor((differenceTime - (hours * 3600000)) / 60000);;
-
+      console.log("auth success is calling");
       try {
         if (minutes < 5) {
           await axios.post("/.netlify/functions/adddiscount", {
@@ -42,13 +57,8 @@ export default function NavButtons() {
           });
           console.log(result)
         } else {
-          const result = await axios.post("/.netlify/functions/getdiscount", {
-            session: getCookie('snipcart_auth_cookie'),
-          });
-          setWallet({
-            amount: result.data.wallet,
-            code: result.data.code
-          })
+          getDiscount();  
+          setCount(1);
         }
       } catch (error) {
         console.log(error)

@@ -25,6 +25,8 @@ const Layout = ({ children ,isHome}) => {
         </div>
     </ScreenClassProvider>    
     <Footer/>
+    <div hidden id="snipcart" data-api-key={process.env.GATSBY_SNIPCART_API}></div>
+
   </React.Fragment>
 )}
 
