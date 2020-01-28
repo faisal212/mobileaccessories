@@ -29,7 +29,6 @@ export default function NavButtons() {
   } 
   useEffect( () => {
     if(count=== 0 && typeof window.Snipcart.api.user.current()!== "undefined"){
-      
       getDiscount();  
       setCount(1);
     }
@@ -45,7 +44,8 @@ export default function NavButtons() {
       const milliseconds = parseInt("1000");
       const hours = Math.floor(milliseconds / 3600000);
       const differenceTime = Date.now() - new Date(userCreationDate);
-      const minutes = Math.floor((differenceTime - (hours * 3600000)) / 60000);;
+      const minutes = Math.floor((differenceTime - (hours * 3600000)) / 60000);
+      console.log("tottal minuts " + minutes);
       console.log("auth success is calling");
       try {
         if (minutes < 5) {
@@ -63,8 +63,6 @@ export default function NavButtons() {
       } catch (error) {
         console.log(error)
       }
-
-
     });
 
     window.Snipcart.subscribe('page.change', (page) => {
@@ -144,7 +142,7 @@ const NavButtonsWrapper = styled.div`
   position: absolute;
   right: 15px;
   display: flex;
-    align-items: center;
+  align-items: center;
 
 
 @media (min-width:768px) {
@@ -153,15 +151,13 @@ const NavButtonsWrapper = styled.div`
   align-items: center;
   .icon{
     color: ${colors.mainOrange};
-
   }
-  
 }
 
 .snipcart-user-profile{
   cursor: pointer;
-
 }
+
 .my-account{
   position: relative;
   cursor: pointer;
@@ -212,3 +208,7 @@ function applyCode() {
       });
   }
 }
+
+
+
+
