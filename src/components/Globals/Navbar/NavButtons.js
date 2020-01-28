@@ -52,10 +52,7 @@ export default function NavButtons() {
           await axios.post("/.netlify/functions/addDiscount", {
             session: getCookie('snipcart_auth_cookie'),
           });
-          const result = await axios.post("/.netlify/functions/getdiscount", {
-            session: getCookie('snipcart_auth_cookie'),
-          });
-          console.log(result)
+          getDiscount();
         } else {
           getDiscount();  
           setCount(1);
