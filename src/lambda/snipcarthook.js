@@ -8,6 +8,7 @@ const imgUrl = "https://businessoverbroadway.com/wp-content/uploads/2011/10/Mobi
 const template = (body) => {
     return (
         `
+        <h2>Thanks For purchasing the mobile cover, Please give your review about the product</h2>
      <form method="post" action="https://www.bulkpanda.pk/.netlify/functions/addreview" target="_blank"> 
     <p>Rating:</p>
     <div class="rating">
