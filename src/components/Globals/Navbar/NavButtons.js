@@ -49,7 +49,7 @@ export default function NavButtons() {
       console.log("auth success is calling");
       try {
         if (minutes < 5) {
-          await axios.post("/.netlify/functions/adddiscount", {
+          await axios.post("/.netlify/functions/addDiscount", {
             session: getCookie('snipcart_auth_cookie'),
           });
           const result = await axios.post("/.netlify/functions/getdiscount", {
